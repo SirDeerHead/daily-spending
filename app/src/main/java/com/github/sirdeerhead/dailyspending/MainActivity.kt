@@ -2,6 +2,8 @@ package com.github.sirdeerhead.dailyspending
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
 
 // Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
 // TODO: https://www.youtube.com/watch?v=obYxPd2ot7Q
@@ -14,8 +16,15 @@ import android.os.Bundle
 
 
 class MainActivity : AppCompatActivity() {
+
+    //Adding binding class
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //Initializing binding view
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
     }
 }
