@@ -2,7 +2,7 @@ package com.github.sirdeerhead.dailyspending
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
 
 // Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
@@ -25,5 +25,30 @@ class MainActivity : AppCompatActivity() {
         //Initializing binding view
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // First it's opening 'Home' screen
+        replaceFragment(Home())
+
+        // Selecting 'Home' as first selected in menu
+        binding.bottomNavigationView.selectedItemId = R.id.home
+        // Switching between fragments in Navigation
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.stats -> replaceFragment(Stats())
+                R.id.home -> replaceFragment(Home())
+                R.id.history -> replaceFragment(History())
+
+                else ->{}
+            }
+            true
+        }
+
+    }
+
+    // method to replace FrameLayout with Fragments
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout_navigation, fragment)
+        fragmentTransaction.commit()
     }
 }
