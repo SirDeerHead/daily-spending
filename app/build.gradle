@@ -59,4 +59,7 @@ dependencies {
 
     // For bottom navigation menu
     implementation 'com.google.android.material:material:1.7.0'
+
+    // For Card view
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
