@@ -3,4 +3,8 @@
 
     <!-- fragment_home.xml -->
     <string name="plus_add_cash_flow">+ Add Cash Flow</string>
+
+    <!-- items_row_history.xml -->
+    <string name="image_edit">image edit</string>
+    <string name="image_delete">image delete</string>
 </resources>

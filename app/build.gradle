@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId "com.github.sirdeerhead.dailyspending"
-        minSdk 21
-        targetSdk 32
+        minSdk 23
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
