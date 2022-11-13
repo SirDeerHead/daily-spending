@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
 import com.github.sirdeerhead.dailyspending.nav.*
+import com.github.sirdeerhead.dailyspending.nav.home.Home
 
 // Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
 // TODO: https://www.youtube.com/watch?v=obYxPd2ot7Q
@@ -42,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
     // method to replace FrameLayout with Fragments
