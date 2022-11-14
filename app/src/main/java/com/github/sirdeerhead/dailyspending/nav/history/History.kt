@@ -1,13 +1,11 @@
-package com.github.sirdeerhead.dailyspending.nav
+package com.github.sirdeerhead.dailyspending.nav.history
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHistoryBinding
-import com.github.sirdeerhead.dailyspending.databinding.FragmentNewCashFlowBinding
 
 class History : Fragment() {
 
@@ -17,7 +15,7 @@ class History : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
         return binding.root

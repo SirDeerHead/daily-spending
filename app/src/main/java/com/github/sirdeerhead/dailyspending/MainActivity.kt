@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
 import com.github.sirdeerhead.dailyspending.nav.*
+import com.github.sirdeerhead.dailyspending.nav.history.History
 import com.github.sirdeerhead.dailyspending.nav.home.Home
 
 // Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
