@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Daily Spending</string>
+
+    <!-- fragment_home.xml -->
+    <string name="plus_add_cash_flow">+ Add Cash Flow</string>
+
+    <!-- items_row_history.xml -->
+    <string name="image_edit">image edit</string>
+    <string name="image_delete">image delete</string>
+
+    <!-- fragment_new_cash_flow.xml -->
+    <string name="new_cash_flow">New Cash Flow</string>
+
+    <!-- database variables -->
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="add">Add</string>
+
+    <!-- dropdown category -->
+    <string-array name="category">
+        <item>Jedzenie</item>
+        <item>Mieszkanie</item>
+        <item>Inne opłaty i rachunki</item>
+        <item>Zdrowie, higiena i chemia</item>
+        <item>Ubrania</item>
+        <item>Relaks</item>
+        <item>Transport</item>
+        <item>Inne wydatki</item>
+    </string-array>
+
 </resources>
