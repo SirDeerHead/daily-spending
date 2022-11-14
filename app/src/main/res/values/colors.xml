@@ -17,4 +17,6 @@
     <color name="AppBarTheme">#212121</color>
     <color name="BackgroundTheme">#303030</color>
     <color name="CardsTheme">#424242</color>
+    <color name="InputsTheme">#767676</color>
+    <color name="TextTheme">#EAEAEA</color>
 </resources>
