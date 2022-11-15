@@ -11,6 +11,11 @@
     <!-- fragment_new_cash_flow.xml -->
     <string name="new_cash_flow">New Cash Flow</string>
 
+    <!-- dialog_update.xml -->
+    <string name="update_cash_flow">Update Cash Flow</string>
+    <string name="update">Update</string>
+    <string name="cancel">Cancel</string>
+
     <!-- database variables -->
     <string name="date">Date</string>
     <string name="amount">Amount</string>
