@@ -27,8 +27,8 @@
     <string-array name="category">
         <item>Jedzenie</item>
         <item>Mieszkanie</item>
-        <item>Inne opłaty i rachunki</item>
-        <item>Zdrowie, higiena i chemia</item>
+        <item>Opłaty i rachunki</item>
+        <item>Zdrowie i uroda</item>
         <item>Ubrania</item>
         <item>Relaks</item>
         <item>Transport</item>

@@ -36,7 +36,7 @@ class NewCashFlow : BottomSheetDialogFragment() {
 
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
         binding.addCashFlow.setOnClickListener{
-            // addRecord(cashFlowDao = )
+            addRecord(cashFlowDao)
         }
 
         binding.tietDate.setOnClickListener{
