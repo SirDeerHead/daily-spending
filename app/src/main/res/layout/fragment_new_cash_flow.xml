@@ -27,7 +27,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/date"
+            android:id="@+id/tietDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/TextTheme"
@@ -50,7 +50,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/amount"
+            android:id="@+id/tietAmount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="numberDecimal"
@@ -91,7 +91,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description"
+            android:id="@+id/tietDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/TextTheme"
@@ -103,7 +103,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/saveCashFlow"
+        android:id="@+id/addCashFlow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

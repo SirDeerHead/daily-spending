@@ -6,9 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentNewCashFlowBinding
+import com.github.sirdeerhead.dailyspending.room.CashFlowApp
+import com.github.sirdeerhead.dailyspending.room.CashFlowDao
+import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
 import java.util.*
 
 class NewCashFlow : BottomSheetDialogFragment() {
@@ -26,11 +34,46 @@ class NewCashFlow : BottomSheetDialogFragment() {
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_category_items, category)
         binding.actvDropdownCategory.setAdapter(arrayAdapter)
 
-        binding.date.setOnClickListener{
+        val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
+        binding.addCashFlow.setOnClickListener{
+            // addRecord(cashFlowDao = )
+        }
+
+        binding.tietDate.setOnClickListener{
             cashFlowDatePicker()
         }
 
         return binding.root
+    }
+
+    fun addRecord(cashFlowDao: CashFlowDao){
+        val date = binding.tietDate.text.toString()
+        val amount = binding.tietAmount.text.toString()
+        val category = binding.actvDropdownCategory.text.toString()
+        val description = binding.tietDescription.text.toString()
+
+        if(date.isNotEmpty() && amount.isNotEmpty()
+            && category.isNotEmpty() && description.isNotEmpty()){
+
+            lifecycleScope.launch {
+                cashFlowDao.insert(
+                    CashFlowEntity(
+                        date = date, amount = amount.toDouble(),
+                        category = category, description = description
+                    ))
+
+                Toast.makeText(activity, "Cash Flow added", Toast.LENGTH_LONG).show()
+
+                binding.tietDate.text?.clear()
+                binding.tietAmount.text?.clear()
+                binding.actvDropdownCategory.text?.clear()
+                binding.tietDescription.text?.clear()
+            }
+        } else {
+            Toast.makeText(activity,
+                "Date, amount, category and description cannot be blank",
+                Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroyView() {
@@ -38,7 +81,7 @@ class NewCashFlow : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    fun cashFlowDatePicker(){
+    private fun cashFlowDatePicker(){
         val cashFlowCalendar = Calendar.getInstance()
         val year = cashFlowCalendar.get(Calendar.YEAR)
         val month = cashFlowCalendar.get(Calendar.MONTH)
@@ -46,7 +89,7 @@ class NewCashFlow : BottomSheetDialogFragment() {
         DatePickerDialog(requireContext(),
             { _, selectedYear, selectedMonth, selectedDayOfMonth ->
                 val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
-                binding.date.setText(selectedDate)
+                binding.tietDate.setText(selectedDate)
             },
             year,
             month,
