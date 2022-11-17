@@ -7,6 +7,7 @@
     <color name="Background">#121212</color>
     <color name="Surface">#121212</color>
     <color name="Error">#CF6679</color>
+    <color name="Good">#8BC34A</color>
     <color name="OnPrimary">#000000</color>
     <color name="OnSecondary">#000000</color>
     <color name="OnBackground">#FFFFFF</color>
