@@ -10,7 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/ButtonTheme">
 
         <ImageView
             android:id="@+id/ivDialogUpdate"
@@ -19,7 +20,8 @@
             android:contentDescription="@string/image_edit"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:scaleType="center"
-            android:src="@drawable/ic_edit"/>
+            android:src="@drawable/ic_edit"
+            android:background=""/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,16 +123,28 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteCashFlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="0.3"
+            android:backgroundTint="@color/Primary"
+            android:text="@string/delete"
+            android:textColor="@color/ButtonDelete"/>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/updateCashFlow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:backgroundTint="@color/Primary"
             android:text="@string/update"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/ButtonUpdate"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancelCashFlow"
@@ -139,7 +153,7 @@
             android:gravity="center"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:backgroundTint="@color/Primary"
             android:text="@string/cancel"
             android:textColor="@android:color/black"/>

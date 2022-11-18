@@ -18,6 +18,13 @@
     <color name="AppBarTheme">#212121</color>
     <color name="BackgroundTheme">#303030</color>
     <color name="CardsTheme">#424242</color>
+    <color name="ButtonTheme">#4C4C4C</color>
+    <color name="HistoryTheme">#5C5C5C</color>
     <color name="InputsTheme">#767676</color>
     <color name="TextTheme">#EAEAEA</color>
+
+    <color name="TextSpecific">#1E1E1E</color>
+    <color name="TextRest">#000000</color>
+    <color name="ButtonDelete">#AF0F0F</color>
+    <color name="ButtonUpdate">#0D830D</color>
 </resources>

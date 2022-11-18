@@ -22,6 +22,7 @@
     <string name="category">Category</string>
     <string name="description">Description</string>
     <string name="add">Add</string>
+    <string name="delete">Delete</string>
 
     <!-- dropdown category -->
     <string-array name="category">
