@@ -19,7 +19,7 @@ interface CashFlowDao {
     @Delete
     suspend fun delete(cashFlowEntity: CashFlowEntity)
 
-    @Query("SELECT * FROM `cashFlow-table`")
+    @Query("SELECT * FROM `cashFlow-table` ORDER BY date DESC")
     fun fetchAllCashFlows():Flow<List<CashFlowEntity>>
 
     @Query("SELECT * FROM `cashFlow-table` WHERE id=:id")
