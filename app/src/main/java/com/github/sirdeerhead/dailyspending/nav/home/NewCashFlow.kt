@@ -15,8 +15,6 @@ import com.github.sirdeerhead.dailyspending.room.CashFlowDao
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.Fragment
 import java.util.*
 
 class NewCashFlow : BottomSheetDialogFragment() {

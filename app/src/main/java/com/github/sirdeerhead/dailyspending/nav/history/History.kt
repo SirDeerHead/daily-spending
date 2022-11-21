@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.sirdeerhead.dailyspending.CashFlowViewModel
+import com.github.sirdeerhead.dailyspending.MainActivity
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHistoryBinding
 import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
@@ -23,6 +26,7 @@ class History : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
+    private lateinit var cashFlowViewModel: CashFlowViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +35,7 @@ class History : Fragment() {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
+        cashFlowViewModel = ViewModelProvider(this)[CashFlowViewModel::class.java]
 
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
@@ -59,7 +64,7 @@ class History : Fragment() {
 
     }
 
-    fun updateRecordDialog(id:Int, cashFlowDao: CashFlowDao){
+    private fun updateRecordDialog(id:Int, cashFlowDao: CashFlowDao){
         val updateDialog = BottomSheetDialog(requireContext(), com.google.android.material.R.style.Theme_Design_BottomSheetDialog)
         updateDialog.setCancelable(false)
         val binding = FragmentUpdateCashFlowBinding.inflate(layoutInflater)
@@ -105,44 +110,36 @@ class History : Fragment() {
         }
 
         binding.deleteCashFlow.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Delete Cash Flow")
-            builder.setIcon(R.drawable.ic_delete)
-
-            lifecycleScope.launch{
-                cashFlowDao.fetchCashFlow(id).collect{
-                    if(it != null){
-                        builder.setMessage("Are you sure you want to delete Cash Flow:\n" +
-                                            " Date - ${it.date}\n" +
-                                            " Amount - ${it.amount}\n" +
-                                            " Category - ${it.category}\n" +
-                                            " Description - ${it.description}")
-                    }
-                }
-            }
-
-            builder.setPositiveButton("Yes"){dialogInterface, _ ->
-                lifecycleScope.launch{
-                    cashFlowDao.delete(CashFlowEntity(id))
-
-                    Toast.makeText(
-                        activity?.applicationContext,
-                        "Cash Flow deleted successfully.",
-                        Toast.LENGTH_LONG).show()
-                }
-                dialogInterface.dismiss()
-            }
-
-            builder.setNegativeButton("No"){dialogInterface, _ ->
-                dialogInterface.dismiss()
-            }
-
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.setCancelable(false)
-            alertDialog.show()
+            deleteRecordAlertDialog(id, cashFlowDao)
         }
 
         updateDialog.show()
+    }
+
+    private fun deleteRecordAlertDialog(id:Int, cashFlowDao: CashFlowDao){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete Cash Flow")
+        builder.setIcon(R.drawable.ic_delete)
+
+        builder.setPositiveButton("Yes"){dialogInterface, _ ->
+            lifecycleScope.launch{
+                cashFlowDao.delete(CashFlowEntity(id))
+
+                Toast.makeText(
+                    activity?.applicationContext,
+                    "Cash Flow deleted successfully.",
+                    Toast.LENGTH_LONG).show()
+            }
+            dialogInterface.dismiss()
+        }
+
+        builder.setNegativeButton("No"){dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 
     override fun onDestroyView() {

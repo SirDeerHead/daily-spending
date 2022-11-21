@@ -6,11 +6,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
-import com.github.sirdeerhead.dailyspending.databinding.ItemsRowHistoryBinding
 
 class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
                       private val updateListener:(id:Int)->Unit,
-                      //private val deleteListener:(id:Int)->Unit,
                       ): RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
 
     class ViewHolder(binding: CardRowHistoryBinding): RecyclerView.ViewHolder(binding.root){

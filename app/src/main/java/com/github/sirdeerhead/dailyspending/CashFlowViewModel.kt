@@ -1,9 +1,9 @@
-package com.github.sirdeerhead.dailyspending.nav.home
+package com.github.sirdeerhead.dailyspending
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NewCashFlowViewModel : ViewModel() {
+class CashFlowViewModel : ViewModel() {
 
     var date = MutableLiveData<String>()
     var amount = MutableLiveData<Double>()
