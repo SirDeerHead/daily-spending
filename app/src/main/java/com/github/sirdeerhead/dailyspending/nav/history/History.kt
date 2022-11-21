@@ -12,14 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHistoryBinding
 import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
-import com.github.sirdeerhead.dailyspending.nav.home.NewCashFlow
 import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import kotlinx.coroutines.launch
-import com.github.sirdeerhead.dailyspending.nav.history.UpdateCashFlow
+import com.github.sirdeerhead.dailyspending.room.CashFlowAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.coroutines.flow.collect
 
 class History : Fragment() {
 
@@ -48,9 +46,11 @@ class History : Fragment() {
     private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
                                                     cashFlowDao: CashFlowDao){
         if(cashFlowList.isNotEmpty()){
-            //val itemAdapter = CashFlowAdapter(cashFlowList)
+            val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
+                updateRecordDialog(updateId, cashFlowDao)
+            }
             binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
-            //binding.rvAllHistory.adapter = itemAdapter
+            binding.rvAllHistory.adapter = itemAdapter
         } else {
             Toast.makeText(activity,
                 "No Cash Flow found. Please add if you have one.",

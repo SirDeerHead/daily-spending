@@ -9,7 +9,7 @@ import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
 import com.github.sirdeerhead.dailyspending.databinding.ItemsRowHistoryBinding
 
 class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
-                      //private val updateListener:(id:Int)->Unit,
+                      private val updateListener:(id:Int)->Unit,
                       //private val deleteListener:(id:Int)->Unit,
                       ): RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
 
@@ -42,7 +42,7 @@ class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
         }
 
         holder.ivEditButton.setOnClickListener{
-            //updateListener.invoke(item.id)
+            updateListener.invoke(item.id)
         }
     }
 
