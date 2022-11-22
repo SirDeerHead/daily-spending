@@ -8,7 +8,7 @@ import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
 
 class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
-                      private val updateListener:(id:Int)->Unit,
+                      private val updateListener:(id:Int)->Unit
                       ): RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
 
     class ViewHolder(binding: CardRowHistoryBinding): RecyclerView.ViewHolder(binding.root){

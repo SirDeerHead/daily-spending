@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cashFlow-table")
 data class CashFlowEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val date: String = "",
+    val date: String = " ",
     val amount: Double = 0.0,
-    val category: String = "",
-    val description: String = "",
+    val category: String = " ",
+    val description: String = " ",
 )

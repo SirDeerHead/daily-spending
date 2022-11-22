@@ -48,22 +48,6 @@ class History : Fragment() {
         return binding.root
     }
 
-    private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
-                                                    cashFlowDao: CashFlowDao){
-        if(cashFlowList.isNotEmpty()){
-            val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
-                updateRecordDialog(updateId, cashFlowDao)
-            }
-            binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
-            binding.rvAllHistory.adapter = itemAdapter
-        } else {
-            Toast.makeText(activity,
-                "No Cash Flow found. Please add if you have one.",
-                Toast.LENGTH_LONG).show()
-        }
-
-    }
-
     private fun updateRecordDialog(id:Int, cashFlowDao: CashFlowDao){
         val updateDialog = BottomSheetDialog(requireContext(), com.google.android.material.R.style.Theme_Design_BottomSheetDialog)
         updateDialog.setCancelable(false)
@@ -111,6 +95,7 @@ class History : Fragment() {
 
         binding.deleteCashFlow.setOnClickListener {
             deleteRecordAlertDialog(id, cashFlowDao)
+            updateDialog.dismiss()
         }
 
         updateDialog.show()
@@ -142,9 +127,18 @@ class History : Fragment() {
         alertDialog.show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
+                                                    cashFlowDao: CashFlowDao){
+        if(cashFlowList.isNotEmpty()){
+            val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
+                updateRecordDialog(updateId, cashFlowDao)
+            }
+            binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
+            binding.rvAllHistory.adapter = itemAdapter
+        } else {
+            Toast.makeText(activity,
+                "No Cash Flow found. Please add if you have one.",
+                Toast.LENGTH_LONG).show()
+        }
     }
-
 }
