@@ -7,20 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
 
-class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
-                      private val updateListener:(id:Int)->Unit
-                      ): RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
-
-    class ViewHolder(binding: CardRowHistoryBinding): RecyclerView.ViewHolder(binding.root){
-        val cvHistory = binding.cvHistory
-        val tvDate = binding.tvDate
-        val tvDescription = binding.tvDescription
-        val tvAmount = binding.tvAmount
-        val ivEditButton = binding.ivEditButton
-    }
+class CashFlowAdapter(
+    private val cashFlows: ArrayList<CashFlowEntity>,
+    private val updateListener: (id:Int) -> Unit
+)   :
+    RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(CardRowHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            CardRowHistoryBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -40,11 +38,20 @@ class CashFlowAdapter(private val cashFlows: ArrayList<CashFlowEntity>,
         }
 
         holder.ivEditButton.setOnClickListener{
-            updateListener.invoke(item.id)
+            updateListener(item.id)
         }
     }
 
     override fun getItemCount(): Int {
         return cashFlows.size
+    }
+
+    class ViewHolder(binding: CardRowHistoryBinding): RecyclerView.ViewHolder(binding.root){
+        val cvHistory = binding.cvHistory
+        val clCardHistory = binding.clCardHistory
+        val tvDate = binding.tvDate
+        val tvDescription = binding.tvDescription
+        val tvAmount = binding.tvAmount
+        val ivEditButton = binding.ivEditButton
     }
 }

@@ -40,7 +40,6 @@ class History : Fragment() {
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
                 val list = ArrayList(it)
-
                 setupListOfCashFlowIntoRecyclerView(list, cashFlowDao)
             }
         }
@@ -56,10 +55,12 @@ class History : Fragment() {
 
         lifecycleScope.launch{
             cashFlowDao.fetchCashFlow(id).collect{
-                binding.updateDate.setText(it.date)
-                binding.updateAmount.setText(it.amount.toString())
-                binding.updateDropdownCategory.setText(it.category)
-                binding.updateDescription.setText(it.description)
+                if(it != null){
+                    binding.updateDate.setText(it.date)
+                    binding.updateAmount.setText(it.amount.toString())
+                    binding.updateDropdownCategory.setText(it.category)
+                    binding.updateDescription.setText(it.description)
+                }
             }
         }
 
