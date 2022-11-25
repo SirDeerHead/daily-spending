@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sirdeerhead.dailyspending.CashFlowViewModel
-import com.github.sirdeerhead.dailyspending.MainActivity
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHistoryBinding
 import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
@@ -33,9 +32,9 @@ class History : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
-        val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
         cashFlowViewModel = ViewModelProvider(this)[CashFlowViewModel::class.java]
+        val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
@@ -55,6 +54,7 @@ class History : Fragment() {
 
         lifecycleScope.launch{
             cashFlowDao.fetchCashFlow(id).collect{
+                @Suppress("SENSELESS_COMPARISON")
                 if(it != null){
                     binding.updateDate.setText(it.date)
                     binding.updateAmount.setText(it.amount.toString())
@@ -117,6 +117,13 @@ class History : Fragment() {
                     Toast.LENGTH_LONG).show()
             }
             dialogInterface.dismiss()
+
+            lifecycleScope.launch{
+                cashFlowDao.fetchAllCashFlows().collect{
+                    val list = ArrayList(it)
+                    resetRecyclerView(list, cashFlowDao)
+                }
+            }
         }
 
         builder.setNegativeButton("No"){dialogInterface, _ ->
@@ -141,5 +148,15 @@ class History : Fragment() {
                 "No Cash Flow found. Please add if you have one.",
                 Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun resetRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
+                                  cashFlowDao: CashFlowDao){
+
+        val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
+            updateRecordDialog(updateId, cashFlowDao)
+        }
+        binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
+        binding.rvAllHistory.adapter = itemAdapter
     }
 }

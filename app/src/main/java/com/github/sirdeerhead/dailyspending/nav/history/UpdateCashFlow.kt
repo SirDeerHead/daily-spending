@@ -34,7 +34,7 @@ class UpdateCashFlow : BottomSheetDialogFragment() {
 
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
         binding.updateCashFlow.setOnClickListener{
-            addRecord(cashFlowDao)
+            updateRecord(cashFlowDao)
         }
 
         binding.updateDate.setOnClickListener{
@@ -44,7 +44,7 @@ class UpdateCashFlow : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    private fun addRecord(cashFlowDao: CashFlowDao){
+    private fun updateRecord(cashFlowDao: CashFlowDao){
         val date = binding.updateDate.text.toString()
         val amount = binding.updateAmount.text.toString()
         val category = binding.updateDropdownCategory.text.toString()
@@ -58,7 +58,8 @@ class UpdateCashFlow : BottomSheetDialogFragment() {
                     CashFlowEntity(
                         date = date, amount = amount.toDouble(),
                         category = category, description = description
-                    ))
+                    )
+                )
 
                 Toast.makeText(activity, "Cash Flow added", Toast.LENGTH_LONG).show()
 

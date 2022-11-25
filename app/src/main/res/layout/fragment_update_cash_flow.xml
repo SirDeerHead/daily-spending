@@ -48,8 +48,9 @@
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
             android:maxLines="1"
-            android:editable="true"
-            android:focusableInTouchMode="true"
+            android:editable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/date"
             tools:ignore="Deprecated">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -91,6 +92,7 @@
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
             android:maxLines="1"
+            android:focusableInTouchMode="false"
             android:hint="@string/category"
             android:inputType="none" />
 
