@@ -159,4 +159,5 @@ class History : Fragment() {
         binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
         binding.rvAllHistory.adapter = itemAdapter
     }
+
 }

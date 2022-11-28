@@ -24,4 +24,10 @@ interface CashFlowDao {
 
     @Query("SELECT * FROM `cashFlow-table` WHERE id=:id")
     fun fetchCashFlow(id:Int):Flow<CashFlowEntity>
+
+    @Query("SELECT * FROM `cashFlow-table` WHERE date LIKE :searchQuery " +
+                                            "OR amount LIKE :searchQuery " +
+                                            "OR category LIKE :searchQuery " +
+                                            "OR description LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): Flow<List<CashFlowEntity>>
 }

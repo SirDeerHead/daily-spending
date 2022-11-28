@@ -16,7 +16,7 @@
         tools:ignore="UselessParent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvFilter"
+            android:id="@+id/cvSearchView"
             app:cardCornerRadius="30dp"
             app:cardMaxElevation="20dp"
             android:layout_margin="20dp"
@@ -25,14 +25,18 @@
             android:backgroundTint="@color/CardsTheme">
 
             <LinearLayout
-                android:id="@+id/llFilter"
+                android:id="@+id/llSearchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.SearchView
+                    android:id="@+id/wSearchView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/neon_outline"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Search Here ...."/>
 
             </LinearLayout>
 
@@ -51,12 +55,14 @@
                 android:id="@+id/llAllHistory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/neon_outline"
                 android:orientation="horizontal">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvAllHistory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:layout_margin="20dp"/>
 
             </LinearLayout>
