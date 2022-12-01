@@ -3,6 +3,7 @@ package com.github.sirdeerhead.dailyspending.room
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
@@ -29,5 +30,5 @@ interface CashFlowDao {
                                             "OR amount LIKE :searchQuery " +
                                             "OR category LIKE :searchQuery " +
                                             "OR description LIKE :searchQuery")
-    fun searchDatabase(searchQuery: String): Flow<List<CashFlowEntity>>
+    fun searchRoom(searchQuery: String): Flow<List<CashFlowEntity>>
 }

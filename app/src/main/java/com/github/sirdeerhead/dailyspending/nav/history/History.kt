@@ -2,15 +2,16 @@ package com.github.sirdeerhead.dailyspending.nav.history
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sirdeerhead.dailyspending.CashFlowViewModel
+import com.github.sirdeerhead.dailyspending.MainViewModel
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHistoryBinding
 import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
@@ -20,12 +21,15 @@ import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import kotlinx.coroutines.launch
 import com.github.sirdeerhead.dailyspending.room.CashFlowAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.AndroidEntryPoint
 
-class History : Fragment() {
+@AndroidEntryPoint
+class History : Fragment(),  SearchView.OnQueryTextListener{
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
     private lateinit var cashFlowViewModel: CashFlowViewModel
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +40,17 @@ class History : Fragment() {
         cashFlowViewModel = ViewModelProvider(this)[CashFlowViewModel::class.java]
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
+        var searchView = binding.wSearchView
+
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
                 val list = ArrayList(it)
                 setupListOfCashFlowIntoRecyclerView(list, cashFlowDao)
             }
         }
+
+        searchView.isSubmitButtonEnabled = true
+        searchView.setOnQueryTextListener(this)
 
         return binding.root
     }
@@ -143,6 +152,9 @@ class History : Fragment() {
             }
             binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
             binding.rvAllHistory.adapter = itemAdapter
+            mainViewModel.fetchAllCashFlows.observe(viewLifecycleOwner) {
+                itemAdapter.setData(it)
+            }
         } else {
             Toast.makeText(activity,
                 "No Cash Flow found. Please add if you have one.",
@@ -159,5 +171,14 @@ class History : Fragment() {
         binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
         binding.rvAllHistory.adapter = itemAdapter
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        TODO("Not yet implemented")
+    }
+
 
 }

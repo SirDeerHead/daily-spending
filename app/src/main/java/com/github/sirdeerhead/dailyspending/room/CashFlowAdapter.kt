@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending.room
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -8,7 +9,7 @@ import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
 
 class CashFlowAdapter(
-    private val cashFlows: ArrayList<CashFlowEntity>,
+    private var cashFlows: List<CashFlowEntity> = emptyList(),
     private val updateListener: (id:Int) -> Unit
 )   :
     RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
@@ -53,5 +54,11 @@ class CashFlowAdapter(
         val tvDescription = binding.tvDescription
         val tvAmount = binding.tvAmount
         val ivEditButton = binding.ivEditButton
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(newData: List<CashFlowEntity>){
+        cashFlows = newData
+        notifyDataSetChanged()
     }
 }

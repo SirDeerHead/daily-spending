@@ -36,7 +36,10 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/neon_outline"
                     app:iconifiedByDefault="false"
-                    app:queryHint="Search Here ...."/>
+                    app:queryHint="Search Here ...."
+                    app:showAsAction="ifRoom"
+                    app:actionViewClass="androidx.appcompat.widget.SearchView"
+                    tools:targetApi="o"/>
 
             </LinearLayout>
 
