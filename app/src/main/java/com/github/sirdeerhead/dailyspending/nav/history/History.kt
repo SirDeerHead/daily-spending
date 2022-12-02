@@ -31,6 +31,9 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     private lateinit var cashFlowViewModel: CashFlowViewModel
     private val mainViewModel: MainViewModel by viewModels()
 
+    private lateinit var mainAdapter: CashFlowAdapter
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +43,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         cashFlowViewModel = ViewModelProvider(this)[CashFlowViewModel::class.java]
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
-        var searchView = binding.wSearchView
+        val searchView = binding.wSearchView
 
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
@@ -173,11 +176,24 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+        return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onQueryTextChange(query: String?): Boolean {
+        if(query != null){
+            searchRoom(query)
+        }
+        return true
+    }
+
+    private fun searchRoom(query: String){
+        val searchQuery = "%$query%"
+
+        mainViewModel.searchRoom(searchQuery).observe(this) { list ->
+            list.let{
+                mainAdapter.setData(it)
+           }
+        }
     }
 
 
