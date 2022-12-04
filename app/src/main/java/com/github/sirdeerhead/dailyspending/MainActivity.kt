@@ -9,12 +9,8 @@ import com.github.sirdeerhead.dailyspending.nav.history.History
 import com.github.sirdeerhead.dailyspending.nav.home.Home
 import dagger.hilt.android.AndroidEntryPoint
 
-// Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
-// TODO: https://www.youtube.com/watch?v=obYxPd2ot7Q
-// Bottom Sheet Dialog Android Studio Kotlin Example Tutorial - ViewModel
-// TODO: https://www.youtube.com/watch?v=RzjCMa4GBD4
-// Room Database Android Studio Kotlin Example Tutorial
-// TODO: https://www.youtube.com/watch?v=-LNg-K7SncM
+// Export room database to csv
+// TODO: https://medium.com/@tonia.tkachuk/how-to-export-room-database-to-csv-file-a51fec589618
 // Schedule Local Notifications Android Studio Kotlin Tutorial
 // TODO: https://www.youtube.com/watch?v=_Z2S63O-1HE
 

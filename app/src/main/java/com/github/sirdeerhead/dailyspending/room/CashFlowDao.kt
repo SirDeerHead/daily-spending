@@ -22,6 +22,9 @@ interface CashFlowDao {
     @Query("SELECT * FROM `cashFlow-table` ORDER BY date DESC")
     fun fetchAllCashFlows():Flow<List<CashFlowEntity>>
 
+    @Query("SELECT * FROM `cashFlow-table` ORDER BY id DESC")
+    fun fetchCashFlowsDESC():Flow<List<CashFlowEntity>>
+
     @Query("SELECT * FROM `cashFlow-table` WHERE id=:id")
     fun fetchCashFlow(id:Int):Flow<CashFlowEntity>
 
