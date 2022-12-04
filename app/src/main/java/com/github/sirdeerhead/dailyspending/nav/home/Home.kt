@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.github.sirdeerhead.dailyspending.CashFlowViewModel
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null

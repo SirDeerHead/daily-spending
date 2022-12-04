@@ -1,18 +1,14 @@
 package com.github.sirdeerhead.dailyspending
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import androidx.room.Query
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.github.sirdeerhead.dailyspending.room.Repository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private val repository: Repository,
-    private val savedStateHandle: SavedStateHandle
+class MainViewModel @ViewModelInject constructor(
+    private val repository: Repository
 ) : ViewModel(), LifecycleObserver {
 
     val fetchAllCashFlows = repository.fetchAllCashFlows().asLiveData()

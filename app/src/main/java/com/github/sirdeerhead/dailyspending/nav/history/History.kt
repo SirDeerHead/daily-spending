@@ -28,11 +28,9 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-    private lateinit var cashFlowViewModel: CashFlowViewModel
     private val mainViewModel: MainViewModel by viewModels()
-
+    private lateinit var cashFlowViewModel: CashFlowViewModel
     private lateinit var mainAdapter: CashFlowAdapter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +46,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
                 val list = ArrayList(it)
+                setItemAdapter(list, cashFlowDao)
                 setupListOfCashFlowIntoRecyclerView(list, cashFlowDao)
             }
         }
@@ -132,8 +131,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
 
             lifecycleScope.launch{
                 cashFlowDao.fetchAllCashFlows().collect{
-                    val list = ArrayList(it)
-                    resetRecyclerView(list, cashFlowDao)
+                    resetRecyclerView()
                 }
             }
         }
@@ -150,13 +148,11 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
                                                     cashFlowDao: CashFlowDao){
         if(cashFlowList.isNotEmpty()){
-            val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
-                updateRecordDialog(updateId, cashFlowDao)
-            }
+
             binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
-            binding.rvAllHistory.adapter = itemAdapter
+            binding.rvAllHistory.adapter = mainAdapter
             mainViewModel.fetchAllCashFlows.observe(viewLifecycleOwner) {
-                itemAdapter.setData(it)
+                mainAdapter.setData(it)
             }
         } else {
             Toast.makeText(activity,
@@ -164,19 +160,35 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
                 Toast.LENGTH_LONG).show()
         }
     }
-
-    private fun resetRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
-                                  cashFlowDao: CashFlowDao){
-
+    
+    private fun setItemAdapter(cashFlowList: ArrayList<CashFlowEntity>,
+                               cashFlowDao: CashFlowDao){
         val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
             updateRecordDialog(updateId, cashFlowDao)
         }
-        binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
-        binding.rvAllHistory.adapter = itemAdapter
+        mainAdapter = itemAdapter
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        return true
+    private fun resetRecyclerView(){
+
+        binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
+        binding.rvAllHistory.adapter = mainAdapter
+    }
+
+    private fun searchRoom(query: String){
+        val searchQuery = "%$query%"
+        
+        binding.rvAllHistory.adapter = mainAdapter
+
+        if (mainAdapter != null){
+            mainViewModel.searchRoom(searchQuery).observe(this) { list ->
+                list.let{
+                    mainAdapter!!.setData(it)
+               }
+            }
+        } else {
+            println("dummy")
+        }
     }
 
     override fun onQueryTextChange(query: String?): Boolean {
@@ -186,15 +198,9 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         return true
     }
 
-    private fun searchRoom(query: String){
-        val searchQuery = "%$query%"
-
-        mainViewModel.searchRoom(searchQuery).observe(this) { list ->
-            list.let{
-                mainAdapter.setData(it)
-           }
-        }
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return true
     }
 
-
 }
+

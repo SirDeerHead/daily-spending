@@ -15,8 +15,10 @@ import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class UpdateCashFlow : BottomSheetDialogFragment() {
 
     private var _binding: FragmentUpdateCashFlowBinding? = null

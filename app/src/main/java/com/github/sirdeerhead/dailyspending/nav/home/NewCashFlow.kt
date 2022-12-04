@@ -14,9 +14,11 @@ import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
 
+@AndroidEntryPoint
 class NewCashFlow : BottomSheetDialogFragment() {
 
     private var _binding: FragmentNewCashFlowBinding? = null
