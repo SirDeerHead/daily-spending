@@ -1,4 +1,4 @@
-package com.github.sirdeerhead.dailyspending.nav.home
+package com.github.sirdeerhead.dailyspending.nav.history
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -9,48 +9,48 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.github.sirdeerhead.dailyspending.R
-import com.github.sirdeerhead.dailyspending.databinding.FragmentNewCashFlowBinding
 import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.github.sirdeerhead.dailyspending.databinding.FragmentUpdateCashFlowBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class NewCashFlow : BottomSheetDialogFragment() {
+class UpdateCashFlow : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentNewCashFlowBinding? = null
+    private var _binding: FragmentUpdateCashFlowBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNewCashFlowBinding.inflate(inflater, container, false)
+        _binding = FragmentUpdateCashFlowBinding.inflate(inflater, container, false)
 
         val category = resources.getStringArray(R.array.category)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_category_items, category)
-        binding.actvDropdownCategory.setAdapter(arrayAdapter)
+        binding.updateDropdownCategory.setAdapter(arrayAdapter)
 
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
-        binding.addCashFlow.setOnClickListener{
-            addRecord(cashFlowDao)
+        binding.updateCashFlow.setOnClickListener{
+            updateRecord(cashFlowDao)
         }
 
-        binding.tietDate.setOnClickListener{
+        binding.updateDate.setOnClickListener{
             cashFlowDatePicker()
         }
 
         return binding.root
     }
 
-    private fun addRecord(cashFlowDao: CashFlowDao){
-        val date = binding.tietDate.text.toString()
-        val amount = binding.tietAmount.text.toString()
-        val category = binding.actvDropdownCategory.text.toString()
-        val description = binding.tietDescription.text.toString()
+    private fun updateRecord(cashFlowDao: CashFlowDao){
+        val date = binding.updateDate.text.toString()
+        val amount = binding.updateAmount.text.toString()
+        val category = binding.updateDropdownCategory.text.toString()
+        val description = binding.updateDescription.text.toString()
 
         if(date.isNotEmpty() && amount.isNotEmpty()
             && category.isNotEmpty() && description.isNotEmpty()){
@@ -60,14 +60,15 @@ class NewCashFlow : BottomSheetDialogFragment() {
                     CashFlowEntity(
                         date = date, amount = amount.toDouble(),
                         category = category, description = description
-                    ))
+                    )
+                )
 
                 Toast.makeText(activity, "Cash Flow added", Toast.LENGTH_LONG).show()
 
-                binding.tietDate.text?.clear()
-                binding.tietAmount.text?.clear()
-                binding.actvDropdownCategory.text?.clear()
-                binding.tietDescription.text?.clear()
+                binding.updateDate.text?.clear()
+                binding.updateAmount.text?.clear()
+                binding.updateDropdownCategory.text?.clear()
+                binding.updateDescription.text?.clear()
             }
         } else {
             Toast.makeText(activity,
@@ -84,7 +85,7 @@ class NewCashFlow : BottomSheetDialogFragment() {
         DatePickerDialog(requireContext(),
             { _, selectedYear, selectedMonth, selectedDayOfMonth ->
                 val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
-                binding.tietDate.setText(selectedDate)
+                binding.updateDate.setText(selectedDate)
             },
             year,
             month,

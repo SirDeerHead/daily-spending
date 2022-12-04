@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.sirdeerhead.dailyspending.R
-import com.github.sirdeerhead.dailyspending.databinding.FragmentNewCashFlowBinding
 import com.github.sirdeerhead.dailyspending.databinding.FragmentStatsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Stats : Fragment() {
 
     private var _binding: FragmentStatsBinding? = null
@@ -17,7 +17,7 @@ class Stats : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
 
         return binding.root

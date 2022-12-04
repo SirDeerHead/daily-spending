@@ -6,21 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.github.sirdeerhead.dailyspending.CashFlowViewModel
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var newCashFlowViewModel: NewCashFlowViewModel
+    private lateinit var cashFlowViewModel: CashFlowViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        newCashFlowViewModel = ViewModelProvider(this)[NewCashFlowViewModel::class.java]
+        cashFlowViewModel = ViewModelProvider(this)[CashFlowViewModel::class.java]
 
         binding.btnCashFlowButton.setOnClickListener {
             NewCashFlow().show(childFragmentManager,"newCashFlowTag")

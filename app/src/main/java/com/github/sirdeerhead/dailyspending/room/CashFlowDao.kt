@@ -19,9 +19,15 @@ interface CashFlowDao {
     @Delete
     suspend fun delete(cashFlowEntity: CashFlowEntity)
 
-    @Query("SELECT * FROM `cashFlow-table`")
+    @Query("SELECT * FROM `cashFlow-table` ORDER BY date DESC")
     fun fetchAllCashFlows():Flow<List<CashFlowEntity>>
 
     @Query("SELECT * FROM `cashFlow-table` WHERE id=:id")
     fun fetchCashFlow(id:Int):Flow<CashFlowEntity>
+
+    @Query("SELECT * FROM `cashFlow-table` WHERE date LIKE :searchQuery " +
+                                            "OR amount LIKE :searchQuery " +
+                                            "OR category LIKE :searchQuery " +
+                                            "OR description LIKE :searchQuery")
+    fun searchRoom(searchQuery: String): Flow<List<CashFlowEntity>>
 }

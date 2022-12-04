@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="nav.home.NewCashFlow"
+    tools:context="nav.history.UpdateCashFlow"
     android:background="@color/CardsTheme"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_cash_flow"
-        android:textSize="30sp"
-        android:textColor="@color/TextTheme"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        style="@style/TextAppearance.AppCompat.Title"/>
+        android:background="@color/ButtonTheme">
+
+        <ImageView
+            android:id="@+id/ivDialogUpdate"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_edit"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="center"
+            android:src="@drawable/ic_edit"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update_cash_flow"
+                android:textSize="30sp"
+                android:textColor="@color/TextTheme"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/TextAppearance.AppCompat.Title"/>
+    </LinearLayout>
 
     <!-- D A T E -->
     <com.google.android.material.textfield.TextInputLayout
@@ -27,7 +42,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietDate"
+            android:id="@+id/updateDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/TextTheme"
@@ -50,7 +65,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietAmount"
+            android:id="@+id/updateAmount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="numberDecimal|numberSigned"
@@ -71,7 +86,7 @@
         android:layout_marginVertical="5dp">
 
         <AutoCompleteTextView
-            android:id="@+id/actvDropdown_category"
+            android:id="@+id/updateDropdown_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/TextTheme"
@@ -92,7 +107,7 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietDescription"
+            android:id="@+id/updateDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/TextTheme"
@@ -103,16 +118,46 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addCashFlow"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="100dp"
-        android:backgroundTint="@color/Primary"
-        android:text="@string/add"
-        android:textColor="@android:color/black"/>
+        android:layout_height="wrap_content">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteCashFlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="0.3"
+            android:backgroundTint="@color/Primary"
+            android:text="@string/delete"
+            android:textColor="@color/ButtonDelete"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/updateCashFlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="0.3"
+            android:backgroundTint="@color/Primary"
+            android:text="@string/update"
+            android:textColor="@color/ButtonUpdate"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelCashFlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="0.3"
+            android:backgroundTint="@color/Primary"
+            android:text="@string/cancel"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
 
 </LinearLayout>

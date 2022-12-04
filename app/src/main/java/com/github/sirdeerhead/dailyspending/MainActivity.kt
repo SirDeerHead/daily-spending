@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
 import com.github.sirdeerhead.dailyspending.nav.*
+import com.github.sirdeerhead.dailyspending.nav.history.History
 import com.github.sirdeerhead.dailyspending.nav.home.Home
+import dagger.hilt.android.AndroidEntryPoint
 
 // Bottom Tab Bar Example Fragments Android Studio Kotlin Tutorial
 // TODO: https://www.youtube.com/watch?v=obYxPd2ot7Q
@@ -16,8 +18,8 @@ import com.github.sirdeerhead.dailyspending.nav.home.Home
 // Schedule Local Notifications Android Studio Kotlin Tutorial
 // TODO: https://www.youtube.com/watch?v=_Z2S63O-1HE
 
-
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity()  {
 
     //Adding binding class
     private lateinit var binding: ActivityMainBinding
