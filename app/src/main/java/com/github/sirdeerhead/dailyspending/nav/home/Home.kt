@@ -41,6 +41,8 @@ class Home : Fragment() {
             }
         }
 
+        setIncomeTextValue(cashFlowDao)
+
         return binding.root
     }
 
@@ -55,6 +57,12 @@ class Home : Fragment() {
                                cashFlowDao: CashFlowDao){
         val itemAdapter = CashFlowAdapterHome(cashFlowList)
         mainAdapter = itemAdapter
+    }
+
+    private fun setIncomeTextValue(cashFlowDao: CashFlowDao){
+        lifecycleScope.launch{
+            binding.tvMoneyIncome.text = cashFlowDao.getTotalIncome().toString()
+        }
     }
 
     override fun onDestroyView() {
