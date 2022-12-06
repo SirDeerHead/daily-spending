@@ -168,7 +168,11 @@
 
                 </LinearLayout>
 
+
+
             </androidx.cardview.widget.CardView>
+
+
 
             <!-- RecycleView -->
             <androidx.cardview.widget.CardView
@@ -195,7 +199,5 @@
                     tools:listitem="@layout/card_row_home"/>
 
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
-
 </FrameLayout>
