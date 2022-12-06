@@ -33,7 +33,7 @@
             android:id="@+id/tvDescriptionHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxEms="11"
+            android:maxEms="8"
             android:singleLine="false"
             android:textSize="14sp"
             android:textColor="@color/TextSpecific"
