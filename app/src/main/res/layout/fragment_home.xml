@@ -167,9 +167,6 @@
                         android:text="@string/plus_add_cash_flow" />
 
                 </LinearLayout>
-
-
-
             </androidx.cardview.widget.CardView>
 
 

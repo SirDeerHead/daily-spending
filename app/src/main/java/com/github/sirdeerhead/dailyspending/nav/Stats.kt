@@ -35,7 +35,15 @@ class Stats : Fragment() {
         }
         */
 
+        setPieChart()
+
         return binding.root
+    }
+
+    // TODO: https://www.youtube.com/watch?v=2ymbQpreCNM&ab_channel=VishalKamboj
+
+    fun setPieChart() {
+
     }
 
     private fun addItem(cashFlowDao: CashFlowDao) {
