@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.CardRowHistoryBinding
 
-class CashFlowAdapter(
+class CashFlowAdapterHistory(
     private var cashFlows: List<CashFlowEntity> = emptyList(),
     private val updateListener: (id:Int) -> Unit
 )   :
-    RecyclerView.Adapter<CashFlowAdapter.ViewHolder>() {
+    RecyclerView.Adapter<CashFlowAdapterHistory.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(

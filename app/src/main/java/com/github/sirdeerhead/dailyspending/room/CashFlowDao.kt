@@ -22,8 +22,17 @@ interface CashFlowDao {
     @Query("SELECT * FROM `cashFlow-table` ORDER BY date DESC")
     fun fetchAllCashFlows():Flow<List<CashFlowEntity>>
 
+    @Query("SELECT * FROM `cashFlow-table` ORDER BY id DESC")
+    fun fetchCashFlowsDESC():Flow<List<CashFlowEntity>>
+
     @Query("SELECT * FROM `cashFlow-table` WHERE id=:id")
     fun fetchCashFlow(id:Int):Flow<CashFlowEntity>
+
+    @Query("SELECT SUM(amount) FROM `cashflow-table` WHERE amount >= 0")
+    suspend fun getTotalIncome():Double
+
+    @Query("SELECT SUM(amount) FROM `cashflow-table` WHERE amount <= 0")
+    suspend fun getTotalExpense():Double
 
     @Query("SELECT * FROM `cashFlow-table` WHERE date LIKE :searchQuery " +
                                             "OR amount LIKE :searchQuery " +

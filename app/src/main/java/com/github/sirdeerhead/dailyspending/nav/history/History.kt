@@ -19,7 +19,7 @@ import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
 import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import kotlinx.coroutines.launch
-import com.github.sirdeerhead.dailyspending.room.CashFlowAdapter
+import com.github.sirdeerhead.dailyspending.room.CashFlowAdapterHistory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +30,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     private val binding get() = _binding!!
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var cashFlowViewModel: CashFlowViewModel
-    private lateinit var mainAdapter: CashFlowAdapter
+    private lateinit var mainAdapter: CashFlowAdapterHistory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -163,7 +163,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     
     private fun setItemAdapter(cashFlowList: ArrayList<CashFlowEntity>,
                                cashFlowDao: CashFlowDao){
-        val itemAdapter = CashFlowAdapter(cashFlowList){ updateId ->
+        val itemAdapter = CashFlowAdapterHistory(cashFlowList){ updateId ->
             updateRecordDialog(updateId, cashFlowDao)
         }
         mainAdapter = itemAdapter
