@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending.nav
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.sirdeerhead.dailyspending.databinding.FragmentStatsBinding
 import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
@@ -51,6 +55,21 @@ class Stats : Fragment() {
         categoryList.add(PieEntry(100f, "100"))
         categoryList.add(PieEntry(100f, "100"))
 
+        val pieDataSet = PieDataSet(categoryList,"List")
+
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS,255)
+
+        pieDataSet.valueTextSize = 15f
+
+        pieDataSet.valueTextColor = Color.BLACK
+
+        val pieData = PieData(pieDataSet)
+
+        pieChart.data = pieData
+
+        pieChart.description.text = "Pie Chart"
+
+        pieChart.centerText = "List ct"
     }
 
     private fun addItem(cashFlowDao: CashFlowDao) {
