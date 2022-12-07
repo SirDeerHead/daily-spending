@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieEntry
 import com.github.sirdeerhead.dailyspending.databinding.FragmentStatsBinding
 import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
@@ -20,6 +22,7 @@ class Stats : Fragment() {
     private var _binding: FragmentStatsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var pieChart : PieChart
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,13 +31,13 @@ class Stats : Fragment() {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
 
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
+        pieChart = binding.pcPieChart
 
         /*
         binding.floatingActionButton.setOnClickListener{
             addItem(cashFlowDao)
         }
         */
-
         setPieChart()
 
         return binding.root
@@ -42,7 +45,11 @@ class Stats : Fragment() {
 
     // TODO: https://www.youtube.com/watch?v=2ymbQpreCNM&ab_channel=VishalKamboj
 
-    fun setPieChart() {
+    private fun setPieChart() {
+        val categoryList: ArrayList<PieEntry> = ArrayList()
+
+        categoryList.add(PieEntry(100f, "100"))
+        categoryList.add(PieEntry(100f, "100"))
 
     }
 
