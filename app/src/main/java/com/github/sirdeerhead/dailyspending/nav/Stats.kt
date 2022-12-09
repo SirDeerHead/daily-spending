@@ -47,8 +47,6 @@ class Stats : Fragment() {
         return binding.root
     }
 
-    // TODO: https://www.youtube.com/watch?v=2ymbQpreCNM&ab_channel=VishalKamboj
-
     private fun setPieChart() {
         val categoryList: ArrayList<PieEntry> = ArrayList()
 
@@ -70,6 +68,9 @@ class Stats : Fragment() {
         pieChart.description.text = "Pie Chart"
 
         pieChart.centerText = "List ct"
+
+        pieChart.animateY(850)
+
     }
 
     private fun addItem(cashFlowDao: CashFlowDao) {
