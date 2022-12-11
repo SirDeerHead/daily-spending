@@ -23,17 +23,19 @@
     <string name="description">Description</string>
     <string name="add">Add</string>
     <string name="delete">Delete</string>
+    <string name="chart_of_expenses">Chart of Expenses</string>
+    <string name="chart_of_incomes">Chart of Incomes</string>
 
     <!-- dropdown category -->
     <string-array name="category">
         <item>Jedzenie</item>
         <item>Mieszkanie</item>
-        <item>Opłaty i rachunki</item>
-        <item>Zdrowie i uroda</item>
+        <item>Opłaty</item>
+        <item>Zdrowie</item>
         <item>Ubrania</item>
         <item>Relaks</item>
         <item>Transport</item>
-        <item>Inne wydatki</item>
+        <item>Inne</item>
     </string-array>
 
 </resources>

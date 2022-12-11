@@ -2,114 +2,125 @@ package com.github.sirdeerhead.dailyspending.nav
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.sirdeerhead.dailyspending.databinding.FragmentStatsBinding
 import com.github.sirdeerhead.dailyspending.room.CashFlowApp
 import com.github.sirdeerhead.dailyspending.room.CashFlowDao
-import com.github.sirdeerhead.dailyspending.room.CashFlowEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class Stats : Fragment() {
 
     private var _binding: FragmentStatsBinding? = null
     private val binding get() = _binding!!
+    private lateinit var pieChartIncomes : PieChart
+    private lateinit var pieChartExpenses : PieChart
+    private lateinit var cashFlowDao : CashFlowDao
 
-    private lateinit var pieChart : PieChart
+    private var colorsExpenses : MutableList<Int?> = mutableListOf(
+        Color.parseColor("#7755FF"), Color.parseColor("#118833"),
+        Color.parseColor("#777766"), Color.parseColor("#5577aa"),
+        Color.parseColor("#dd3322"), Color.parseColor("#3377cc"),
+        Color.parseColor("#996688"), Color.parseColor("#bb33dd")
+    )
+
+    private var colorsIncomes : MutableList<Int?> = mutableListOf(
+        Color.parseColor("#6666dd"), Color.parseColor("#008855"),
+        Color.parseColor("#aa6600"), Color.parseColor("#1177cc"),
+        Color.parseColor("#ee0000"), Color.parseColor("#4477bb"),
+        Color.parseColor("#996677"), Color.parseColor("#aa55aa")
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
+        cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
 
-        val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
-        pieChart = binding.pcPieChart
+        pieChartExpenses = binding.pcPieChartExpenses
+        pieChartIncomes = binding.pcPieChartIncomes
 
-        /*
-        binding.floatingActionButton.setOnClickListener{
-            addItem(cashFlowDao)
-        }
-        */
-        setPieChart()
+        setPieChartExpenses()
+        setPieChartIncomes()
 
         return binding.root
     }
 
-    private fun setPieChart() {
-        val categoryList: ArrayList<PieEntry> = ArrayList()
+    private fun setPieChartExpenses() {
+        val categoryExpensesList: ArrayList<PieEntry> = ArrayList()
 
-        categoryList.add(PieEntry(100f, "100"))
-        categoryList.add(PieEntry(100f, "100"))
+        lifecycleScope.launch{
+            val listOfExpenses = cashFlowDao.countedExpensesCategory()
 
-        val pieDataSet = PieDataSet(categoryList,"List")
+            for (category in listOfExpenses){
+                categoryExpensesList.add(PieEntry(category.totalExpensesCount, category.expensesCategory))
+            }
 
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS,255)
+            val pieDataSet = PieDataSet(categoryExpensesList,"Expenses")
 
-        pieDataSet.valueTextSize = 15f
+            pieDataSet.colors = colorsExpenses
 
-        pieDataSet.valueTextColor = Color.BLACK
+            pieDataSet.valueTextSize = 18f
 
-        val pieData = PieData(pieDataSet)
+            pieDataSet.valueTextColor = Color.BLACK
 
-        pieChart.data = pieData
+            val pieData = PieData(pieDataSet)
 
-        pieChart.description.text = "Pie Chart"
+            pieChartExpenses.data = pieData
 
-        pieChart.centerText = "List ct"
+            pieChartExpenses.legend.isEnabled = false
 
-        pieChart.animateY(850)
+            pieChartExpenses.description.isEnabled = false
 
-    }
+            pieChartExpenses.centerText = "Expenses"
 
-    private fun addItem(cashFlowDao: CashFlowDao) {
-        lifecycleScope.launch {
-            cashFlowDao.insert(
-                CashFlowEntity(
-                    date = "12.12.2022", amount = 20.1,
-                    category = "Jedzenie", description = "Record 1/3"
-                )
-            )
-            cashFlowDao.insert(
-                CashFlowEntity(
-                    date = "12.12.2022", amount = -20.1,
-                    category = "Jedzenie", description = "Record 2/3"
-                )
-            )
-            cashFlowDao.insert(
-                CashFlowEntity(
-                    date = "12.12.2022", amount = 0.0,
-                    category = "Jedzenie", description = "Record 3/3"
-                )
-            )
-            cashFlowDao.insert(
-                CashFlowEntity(
-                    date = "03.11.2020", amount = 123.0,
-                    category = "Ubrania", description = "Record -1/2"
-                )
-            )
-            cashFlowDao.insert(
-                CashFlowEntity(
-                    date = "04.10.2021", amount = -9990.0,
-                    category = "Relaks", description = "Record -2/2"
-                )
-            )
+            pieChartExpenses.animateY(850)
         }
 
-        Toast.makeText(activity, "Cash-s Flow added", Toast.LENGTH_LONG).show()
     }
 
+    private fun setPieChartIncomes() {
+        val categoryIncomesList: ArrayList<PieEntry> = ArrayList()
+
+        lifecycleScope.launch{
+            val listOfIncomes = cashFlowDao.countedIncomesCategory()
+
+            for (category in listOfIncomes){
+                categoryIncomesList.add(PieEntry(category.totalIncomesCount, category.incomesCategory))
+            }
+
+            val pieDataSet = PieDataSet(categoryIncomesList,"Incomes")
+
+            pieDataSet.colors = colorsIncomes
+
+            pieDataSet.valueTextSize = 18f
+
+            pieDataSet.valueTextColor = Color.BLACK
+
+            val pieData = PieData(pieDataSet)
+
+            pieChartIncomes.data = pieData
+
+            pieChartIncomes.legend.isEnabled = false
+
+            pieChartIncomes.description.isEnabled = false
+
+            pieChartIncomes.centerText = "Incomes"
+
+            pieChartIncomes.animateY(850)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
