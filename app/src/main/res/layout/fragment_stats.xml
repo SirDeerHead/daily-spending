@@ -15,14 +15,45 @@
         tools:ignore="UselessParent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvPieChartStats"
+            android:id="@+id/cvTxtPieChartExpenses"
+            app:cardCornerRadius="30dp"
+            app:cardMaxElevation="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="95dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:backgroundTint="@color/CardsTheme">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/neon_outline"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvPieChartExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chart_of_expenses"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextThemeTxt"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPieChartExpenses"
             app:cardCornerRadius="8dp"
             app:cardMaxElevation="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.45"
             android:backgroundTint="@color/CardsTheme">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,30 +63,44 @@
                     android:orientation="vertical"
                     android:background="@drawable/neon_outline_pie_chart">
 
-                    <TextView
-                        android:id="@+id/tvPieChartExpenses"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/chart_of_expenses"
-                        android:textAlignment="center"
-                        android:textColor="@color/TextThemeTxt"
-                        android:textStyle="bold"
-                        android:textSize="20sp"/>
-
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/pcPieChartExpenses"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvTxtPieChartIncomes"
+            app:cardCornerRadius="30dp"
+            app:cardMaxElevation="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="95dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:backgroundTint="@color/CardsTheme">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/neon_outline"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvPieChartIncomes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chart_of_incomes"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextThemeTxt"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -63,10 +108,11 @@
             app:cardCornerRadius="8dp"
             app:cardMaxElevation="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.45"
             android:backgroundTint="@color/CardsTheme">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,19 +122,6 @@
                 android:orientation="vertical"
                 android:background="@drawable/neon_outline_pie_chart">
 
-                <TextView
-                    android:id="@+id/tvPieChartIncomes"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chart_of_incomes"
-                    android:textAlignment="center"
-                    android:textColor="@color/TextThemeTxt"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
-
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pcPieChartIncomes"
                     app:layout_constraintTop_toTopOf="parent"
@@ -96,8 +129,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
+                    android:layout_height="match_parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

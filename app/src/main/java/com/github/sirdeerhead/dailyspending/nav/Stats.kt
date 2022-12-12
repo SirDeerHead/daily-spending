@@ -62,6 +62,7 @@ class Stats : Fragment() {
 
         lifecycleScope.launch{
             val listOfExpenses = cashFlowDao.countedExpensesCategory()
+            val centerTextExpenses : String = cashFlowDao.getTotalExpense().toString()
 
             for (category in listOfExpenses){
                 categoryExpensesList.add(PieEntry(category.totalExpensesCount, category.expensesCategory))
@@ -83,8 +84,10 @@ class Stats : Fragment() {
 
             pieChartExpenses.description.isEnabled = false
 
-            pieChartExpenses.centerText = "Expenses"
-
+            pieChartExpenses.centerText = centerTextExpenses
+            pieChartExpenses.setCenterTextColor(Color.parseColor("#ff595e"))
+            pieChartExpenses.setCenterTextSize(20f)
+            pieChartExpenses.setHoleColor(Color.parseColor("#424242"))
             pieChartExpenses.animateY(850)
         }
 
@@ -95,6 +98,7 @@ class Stats : Fragment() {
 
         lifecycleScope.launch{
             val listOfIncomes = cashFlowDao.countedIncomesCategory()
+            val centerTextIncomes: String = cashFlowDao.getTotalIncome().toString()
 
             for (category in listOfIncomes){
                 categoryIncomesList.add(PieEntry(category.totalIncomesCount, category.incomesCategory))
@@ -116,8 +120,10 @@ class Stats : Fragment() {
 
             pieChartIncomes.description.isEnabled = false
 
-            pieChartIncomes.centerText = "Incomes"
-
+            pieChartIncomes.centerText = centerTextIncomes
+            pieChartIncomes.setCenterTextColor(Color.parseColor("#84a98c"))
+            pieChartIncomes.setCenterTextSize(20f)
+            pieChartIncomes.setHoleColor(Color.parseColor("#424242"))
             pieChartIncomes.animateY(850)
         }
     }
