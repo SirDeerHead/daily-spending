@@ -62,7 +62,7 @@ class Stats : Fragment() {
 
         lifecycleScope.launch{
             val listOfExpenses = cashFlowDao.countedExpensesCategory()
-            val centerTextExpenses : String = cashFlowDao.getTotalExpense().toString()
+            val centerTextExpenses : Double?
 
             for (category in listOfExpenses){
                 categoryExpensesList.add(PieEntry(category.totalExpensesCount, category.expensesCategory))
@@ -84,7 +84,13 @@ class Stats : Fragment() {
 
             pieChartExpenses.description.isEnabled = false
 
-            pieChartExpenses.centerText = centerTextExpenses
+            centerTextExpenses = cashFlowDao.getTotalExpense()
+            if(centerTextExpenses != null){
+                pieChartExpenses.centerText = centerTextExpenses.toString()
+            } else {
+                pieChartExpenses.centerText = "0.0"
+            }
+
             pieChartExpenses.setCenterTextColor(Color.parseColor("#ff595e"))
             pieChartExpenses.setCenterTextSize(20f)
             pieChartExpenses.setHoleColor(Color.parseColor("#424242"))
@@ -98,7 +104,7 @@ class Stats : Fragment() {
 
         lifecycleScope.launch{
             val listOfIncomes = cashFlowDao.countedIncomesCategory()
-            val centerTextIncomes: String = cashFlowDao.getTotalIncome().toString()
+            val centerTextIncomes: Double?
 
             for (category in listOfIncomes){
                 categoryIncomesList.add(PieEntry(category.totalIncomesCount, category.incomesCategory))
@@ -120,7 +126,13 @@ class Stats : Fragment() {
 
             pieChartIncomes.description.isEnabled = false
 
-            pieChartIncomes.centerText = centerTextIncomes
+            centerTextIncomes = cashFlowDao.getTotalIncome()
+            if(centerTextIncomes != null){
+                pieChartIncomes.centerText = centerTextIncomes.toString()
+            } else {
+                pieChartIncomes.centerText = "0.0"
+            }
+
             pieChartIncomes.setCenterTextColor(Color.parseColor("#84a98c"))
             pieChartIncomes.setCenterTextSize(20f)
             pieChartIncomes.setHoleColor(Color.parseColor("#424242"))

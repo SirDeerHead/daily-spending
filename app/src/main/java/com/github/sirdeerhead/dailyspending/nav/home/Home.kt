@@ -31,6 +31,7 @@ class Home : Fragment() {
 
         binding.btnCashFlowButton.setOnClickListener {
             NewCashFlow().show(childFragmentManager,"newCashFlowTag")
+            setIncomeTextValue(cashFlowDao)
         }
 
         lifecycleScope.launch{
@@ -61,7 +62,14 @@ class Home : Fragment() {
 
     private fun setIncomeTextValue(cashFlowDao: CashFlowDao){
         lifecycleScope.launch{
-            binding.tvMoneyIncome.text = cashFlowDao.getTotalIncome().toString()
+            val totalIncome: Double?
+            totalIncome = cashFlowDao.getTotalIncome()
+
+            if(totalIncome != null){
+                binding.tvMoneyIncome.text = totalIncome.toString()
+            } else {
+                binding.tvMoneyIncome.text = "0.0"
+            }
         }
     }
 
