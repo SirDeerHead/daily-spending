@@ -20,7 +20,8 @@
                 android:id="@+id/cvMoney"
                 app:cardCornerRadius="30dp"
                 app:cardMaxElevation="20dp"
-                android:layout_margin="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:backgroundTint="@color/CardsTheme">
@@ -143,7 +144,7 @@
                 app:cardCornerRadius="30dp"
                 app:cardMaxElevation="20dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="100dp"
+                android:layout_marginHorizontal="110dp"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:backgroundTint="@color/CardsTheme">
@@ -159,10 +160,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:drawableStart="@drawable/ic_add"
                         android:background="@drawable/action_rounded_corner_button"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="@string/plus_add_cash_flow" />
+                        android:text="@string/add_cash_flow" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -172,11 +174,11 @@
                 app:cardCornerRadius="30dp"
                 app:cardMaxElevation="20dp"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="95dp"
+                android:layout_marginHorizontal="110dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="2dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.05"
+                android:layout_weight="0.028"
                 android:backgroundTint="@color/CardsTheme">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -187,7 +189,7 @@
                         android:id="@+id/tvPieChartExpenses"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/chart_of_expenses"
+                        android:text="@string/recently_added"
                         android:textAlignment="center"
                         android:textColor="@color/TextThemeTxt"
                         android:textStyle="bold"
@@ -201,7 +203,9 @@
                 android:id="@+id/cvRecentHistory"
                 app:cardCornerRadius="30dp"
                 app:cardMaxElevation="20dp"
-                android:layout_margin="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.3"

@@ -27,6 +27,8 @@
     <string name="chart_of_incomes">Chart of Incomes</string>
     <string name="balance">"Balance: "</string>
     <string name="_0_0">0.0</string>
+    <string name="recently_added">Recently added :</string>
+    <string name="add_cash_flow">Add Cash Flow</string>
 
     <!-- dropdown category -->
     <string-array name="category">
