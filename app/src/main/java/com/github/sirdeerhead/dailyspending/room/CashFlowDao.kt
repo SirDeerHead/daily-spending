@@ -1,10 +1,6 @@
 package com.github.sirdeerhead.dailyspending.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -39,4 +35,24 @@ interface CashFlowDao {
                                             "OR category LIKE :searchQuery " +
                                             "OR description LIKE :searchQuery")
     fun searchRoom(searchQuery: String): Flow<List<CashFlowEntity>>
+
+    @Query("SELECT category as expensesCategory, COUNT(category) as totalExpensesCount FROM `cashflow-table` WHERE amount < 0 GROUP BY category")
+    suspend fun countedExpensesCategory(): List<CountedExpensesCategory>
+
+        data class CountedExpensesCategory(
+            var expensesCategory: String = "",
+
+            @ColumnInfo(name = "totalExpensesCount")
+            var totalExpensesCount: Float = 0.0f
+        )
+
+    @Query("SELECT category as incomesCategory, COUNT(category) as totalIncomesCount FROM `cashflow-table` WHERE amount > 0 GROUP BY category")
+    suspend fun countedIncomesCategory(): List<CountedIncomesCategory>
+
+        data class CountedIncomesCategory(
+            var incomesCategory: String = "",
+
+            @ColumnInfo(name = "totalIncomesCount")
+            var totalIncomesCount: Float = 0.0f
+        )
 }

@@ -63,7 +63,7 @@
                                     android:layout_marginEnd="5dp"
                                     android:layout_marginBottom="3dp"
                                     android:textAlignment="center"
-                                    android:text="Balance:"
+                                    android:text="@string/balance"
                                     tools:text="Balance:" />
                                 <TextView
                                     android:id="@+id/tvMoney2"
@@ -102,9 +102,7 @@
                                     android:textColor="@color/Good"
                                     android:layout_margin="14dp"
                                     android:textAlignment="center"
-                                    tools:text="1234,00"
-                                    app:suffixText=" zł"
-                                    app:suffixTextColor="@color/Good"/>
+                                    tools:text="1234,00"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -167,6 +165,34 @@
                         android:text="@string/plus_add_cash_flow" />
 
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/RecentlyAdded"
+                app:cardCornerRadius="30dp"
+                app:cardMaxElevation="20dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="95dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.05"
+                android:backgroundTint="@color/CardsTheme">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/neon_outline"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tvPieChartExpenses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chart_of_expenses"
+                        android:textAlignment="center"
+                        android:textColor="@color/TextThemeTxt"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -177,7 +203,8 @@
                 app:cardMaxElevation="20dp"
                 android:layout_margin="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
                 android:backgroundTint="@color/CardsTheme">
 
                 <LinearLayout
@@ -195,7 +222,5 @@
                     tools:listitem="@layout/card_row_home"/>
 
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
-
 </FrameLayout>
