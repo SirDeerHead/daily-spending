@@ -1,4 +1,4 @@
-package com.github.sirdeerhead.dailyspending.nav
+package com.github.sirdeerhead.dailyspending.nav.stats
 
 import android.graphics.Color
 import android.os.Bundle

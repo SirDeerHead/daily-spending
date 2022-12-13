@@ -4,7 +4,7 @@
     <!-- pressed -->
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/PrimaryVariant"/>
+            <solid android:color="@color/Primary"/>
             <corners android:radius="30dp" />
         </shape>
     </item>
@@ -20,7 +20,7 @@
     <!-- default -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/Primary"/>
+            <solid android:color="@color/PrimaryDarker"/>
             <corners android:radius="30dp" />
         </shape>
     </item>

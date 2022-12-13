@@ -38,7 +38,7 @@
                         android:layout_width="match_parent">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cvMoneyAvg"
+                            android:id="@+id/cvMoneyBalance"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
@@ -55,19 +55,18 @@
                                 android:orientation="vertical"
                                 android:gravity="center">
                                 <TextView
-                                    android:id="@+id/tvMoney1"
+                                    android:id="@+id/tvMoneyBalanceTxt"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textColor="@color/TextThemeTxt"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginHorizontal="5dp"
                                     android:layout_marginBottom="3dp"
                                     android:textAlignment="center"
                                     android:text="@string/balance"
                                     tools:text="Balance:" />
                                 <TextView
-                                    android:id="@+id/tvMoney2"
+                                    android:id="@+id/tvMoneyBalanceValue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
@@ -75,8 +74,7 @@
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="5dp"
                                     android:textAlignment="center"
-                                    tools:text="1234,00"
-                                    app:suffixText=" zł"/>
+                                    tools:text="1234,00"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -94,11 +92,25 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/neon_outline">
+                                android:orientation="vertical"
+                                android:background="@drawable/neon_outline"
+                                android:gravity="center">
                                 <TextView
-                                    android:id="@+id/tvMoneyIncome"
+                                    android:id="@+id/tvMoneyIncomeTxt"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/GoodTxt"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="3dp"
+                                    android:textAlignment="center"
+                                    android:text="@string/incomes"
+                                    tools:text="Incomes :" />
+                                <TextView
+                                    android:id="@+id/tvMoneyIncomeValue"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textColor="@color/Good"
                                     android:layout_margin="14dp"
@@ -121,17 +133,30 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
                                 android:background="@drawable/neon_outline">
                                 <TextView
-                                    android:id="@+id/tvMoneyExpense"
+                                    android:id="@+id/tvMoneyExpensesTxt"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/ErrorTxt"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="3dp"
+                                    android:textAlignment="center"
+                                    android:text="@string/expenses"
+                                    tools:text="Expenses :" />
+                                <TextView
+                                    android:id="@+id/tvMoneyExpensesValue"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:textColor="@color/Error"
                                     android:layout_margin="14dp"
                                     android:textAlignment="center"
-                                    tools:text="1234,00"
-                                    />
+                                    tools:text="1234.00" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -144,27 +169,29 @@
                 app:cardCornerRadius="30dp"
                 app:cardMaxElevation="20dp"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="110dp"
+                android:layout_marginHorizontal="120dp"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/CardsTheme">
 
                 <LinearLayout
                     android:id="@+id/llCashFlowButton"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/neon_outline">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnCashFlowButton"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:paddingHorizontal="10dp"
                         android:drawableStart="@drawable/ic_add"
                         android:background="@drawable/action_rounded_corner_button"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="@string/add_cash_flow" />
+                        android:text="@string/add_cash_flow"
+                        android:textColor="@color/TextTheme" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -178,7 +205,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="2dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.028"
+                android:layout_weight="0.023"
                 android:backgroundTint="@color/CardsTheme">
                 <LinearLayout
                     android:layout_width="match_parent"

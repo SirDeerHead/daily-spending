@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
-import com.github.sirdeerhead.dailyspending.nav.*
 import com.github.sirdeerhead.dailyspending.nav.history.History
 import com.github.sirdeerhead.dailyspending.nav.home.Home
+import com.github.sirdeerhead.dailyspending.nav.stats.Stats
 import dagger.hilt.android.AndroidEntryPoint
 
 // Export room database to csv

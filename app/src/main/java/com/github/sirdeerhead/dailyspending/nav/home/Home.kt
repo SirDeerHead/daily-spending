@@ -31,7 +31,7 @@ class Home : Fragment() {
 
         binding.btnCashFlowButton.setOnClickListener {
             NewCashFlow().show(childFragmentManager,"newCashFlowTag")
-            setIncomeTextValue(cashFlowDao)
+            setTotalsTextValue(cashFlowDao)
         }
 
         lifecycleScope.launch{
@@ -42,7 +42,7 @@ class Home : Fragment() {
             }
         }
 
-        setIncomeTextValue(cashFlowDao)
+        setTotalsTextValue(cashFlowDao)
 
         return binding.root
     }
@@ -60,18 +60,28 @@ class Home : Fragment() {
         mainAdapter = itemAdapter
     }
 
-    private fun setIncomeTextValue(cashFlowDao: CashFlowDao){
+    @Suppress("SENSELESS_COMPARISON")
+    private fun setTotalsTextValue(cashFlowDao: CashFlowDao){
         lifecycleScope.launch{
             val totalIncome: Double?
+            val totalExpense: Double?
             totalIncome = cashFlowDao.getTotalIncome()
+            totalExpense = cashFlowDao.getTotalExpense()
 
             if(totalIncome != null){
-                binding.tvMoneyIncome.text = totalIncome.toString()
+                binding.tvMoneyIncomeValue.text = totalIncome.toString()
             } else {
-                binding.tvMoneyIncome.text = "0.0"
+                binding.tvMoneyIncomeValue.text = "0.0"
+            }
+
+            if(totalIncome != null){
+                binding.tvMoneyExpensesValue.text = totalExpense.toString()
+            } else {
+                binding.tvMoneyExpensesValue.text = "0.0"
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
