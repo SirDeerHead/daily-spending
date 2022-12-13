@@ -74,7 +74,7 @@ class Home : Fragment() {
                 binding.tvMoneyIncomeValue.text = "0.0"
             }
 
-            if(totalIncome != null){
+            if(totalExpense != null){
                 binding.tvMoneyExpensesValue.text = totalExpense.toString()
             } else {
                 binding.tvMoneyExpensesValue.text = "0.0"
