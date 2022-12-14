@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="nav.home.NewCashFlow"
+    tools:context="nav.settings.NewNotification"
     android:background="@color/CardsTheme"
     android:orientation="vertical">
 
@@ -15,18 +15,18 @@
         android:background="@color/ButtonTheme">
 
         <ImageView
-            android:id="@+id/ivNewCashFlow"
+            android:id="@+id/ivNewNotification"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:contentDescription="@string/image_new_cashflow"
+            android:contentDescription="@string/image_notification"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:scaleType="center"
-            android:src="@drawable/ic_new_cashflow"/>
+            android:src="@drawable/ic_notification"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/new_cash_flow"
+            android:text="@string/create_new_notification"
             android:textSize="30sp"
             android:textColor="@color/TextTheme"
             android:layout_marginTop="10dp"
@@ -34,8 +34,7 @@
             style="@style/TextAppearance.AppCompat.Title"/>
     </LinearLayout>
 
-
-    <!-- DATE -->
+    <!-- TITLE -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -44,20 +43,16 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietDate"
+            android:id="@+id/tietTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
-            android:maxLines="1"
-            android:editable="false"
-            android:focusableInTouchMode="false"
-            android:hint="@string/date"
+            android:hint="@string/title"
             tools:ignore="Deprecated" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <!-- AMOUNT -->
+    <!-- MESSAGE -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -66,65 +61,61 @@
         android:layout_marginVertical="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietAmount"
+            android:id="@+id/tietMessage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="numberDecimal|numberSigned"
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
-            android:maxLines="1"
-            android:hint="@string/amount" />
+            android:hint="@string/message" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <!-- CATEGORY -->
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    <!-- DATE & TIME -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp">
+        android:layout_marginVertical="5dp"
+        android:background="@color/ButtonTheme">
 
-        <AutoCompleteTextView
-            android:id="@+id/actvDropdown_category"
-            android:layout_width="match_parent"
+        <DatePicker
+            android:id="@+id/dpDatePicker"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textColor="@color/TextTheme"
-            android:background="@color/InputsTheme"
-            android:maxLines="1"
-            android:focusableInTouchMode="false"
-            android:hint="@string/category"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_gravity="center"
+            android:scaleY="0.7"
+            android:scaleX="0.7"
+            android:calendarTextColor="@color/TextTheme"
+            android:layout_marginLeft="-30dp"
+            android:layout_marginRight="-30dp"/>
 
+        <TimePicker
+            android:id="@+id/tpTimePicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-30dp"
+            android:layout_marginRight="-30dp"
+            android:layout_weight="1"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:numbersTextColor="@color/TextTheme"
+            android:timePickerMode="spinner" />
+    </LinearLayout>
 
-    <!-- DESCRIPTION -->
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="5dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietDescription"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/TextTheme"
-            android:background="@color/InputsTheme"
-            android:maxLines="1"
-            android:hint="@string/description" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- ADD -->
+    <!-- CREATE -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addCashFlow"
+        android:id="@+id/btnNewNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginVertical="20dp"
         android:layout_marginHorizontal="100dp"
         android:backgroundTint="@color/Primary"
-        android:text="@string/add"
+        android:text="@string/create"
         android:textColor="@android:color/black"/>
+
+
 </LinearLayout>

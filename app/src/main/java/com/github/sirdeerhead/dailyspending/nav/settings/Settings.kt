@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.sirdeerhead.dailyspending.databinding.FragmentSettingsBinding
+import com.github.sirdeerhead.dailyspending.nav.home.NewCashFlow
 
 class Settings : Fragment() {
 
@@ -17,6 +18,10 @@ class Settings : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+
+        binding.btnNewNotification.setOnClickListener {
+            NewNotification().show(childFragmentManager,"newNotificationTag")
+        }
 
         return binding.root
     }

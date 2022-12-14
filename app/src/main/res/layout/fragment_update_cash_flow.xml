@@ -8,6 +8,7 @@
     android:background="@color/CardsTheme"
     android:orientation="vertical">
 
+    <!-- IMAGE + TITLE -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +34,8 @@
                 style="@style/TextAppearance.AppCompat.Title"/>
     </LinearLayout>
 
-    <!-- D A T E -->
+
+    <!-- DATE -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -51,12 +53,11 @@
             android:editable="false"
             android:focusableInTouchMode="false"
             android:hint="@string/date"
-            tools:ignore="Deprecated">
-
-        </com.google.android.material.textfield.TextInputEditText>
+            tools:ignore="Deprecated" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- A M O U N T -->
+
+    <!-- AMOUNT -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -72,12 +73,11 @@
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
             android:maxLines="1"
-            android:hint="@string/amount">
-
-        </com.google.android.material.textfield.TextInputEditText>
+            android:hint="@string/amount" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- C A T E G O R Y -->
+
+    <!-- CATEGORY -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
@@ -95,10 +95,10 @@
             android:focusableInTouchMode="false"
             android:hint="@string/category"
             android:inputType="none" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- D E S C R I P T I O N -->
+
+    <!-- DESCRIPTION -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -113,15 +113,15 @@
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
             android:maxLines="1"
-            android:hint="@string/description">
-
-        </com.google.android.material.textfield.TextInputEditText>
+            android:hint="@string/description" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- BUTTONS -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- DELETE -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deleteCashFlow"
             android:layout_width="match_parent"
@@ -134,6 +134,7 @@
             android:text="@string/delete"
             android:textColor="@color/ButtonDelete"/>
 
+        <!-- UPDATE -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/updateCashFlow"
             android:layout_width="match_parent"
@@ -146,6 +147,7 @@
             android:text="@string/update"
             android:textColor="@color/ButtonUpdate"/>
 
+        <!-- CANCEL -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/cancelCashFlow"
             android:layout_width="match_parent"
@@ -157,7 +159,5 @@
             android:backgroundTint="@color/Primary"
             android:text="@string/cancel"
             android:textColor="@android:color/black"/>
-
     </LinearLayout>
-
 </LinearLayout>
