@@ -22,14 +22,15 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/neon_outline"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -40,7 +41,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_2"
@@ -58,7 +60,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_3"
@@ -74,9 +77,10 @@
             app:cardCornerRadius="30dp"
             app:cardMaxElevation="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_4"
