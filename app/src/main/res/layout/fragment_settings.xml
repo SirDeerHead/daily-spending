@@ -16,28 +16,49 @@
         tools:ignore="UselessParent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvSettings_1"
+            android:id="@+id/cvNotification"
             app:cardCornerRadius="30dp"
             app:cardMaxElevation="20dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
             android:backgroundTint="@color/CardsTheme">
-            <LinearLayout
-                android:id="@+id/llSettings_1"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llNotification"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/neon_outline"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/txt_notification"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:paddingHorizontal="10dp"
+                    android:ems="12"
+                    android:singleLine="false"
+                    android:textColor="@color/TextTheme">
 
+                </TextView>
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnNewNotification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notification"/>
-            </LinearLayout>
+                    android:layout_marginHorizontal="30dp"
+                    android:paddingHorizontal="18dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/notification"
+                    android:background="@drawable/action_rounded_corner_button"
+                    android:textColor="@color/TextTheme"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -47,7 +68,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_2"
@@ -65,7 +87,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_3"
@@ -83,7 +106,8 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_4"
