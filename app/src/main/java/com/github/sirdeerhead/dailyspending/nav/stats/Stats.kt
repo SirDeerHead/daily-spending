@@ -47,7 +47,6 @@ class Stats : Fragment() {
     ): View {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
         cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
-
         pieChartExpenses = binding.pcPieChartExpenses
         pieChartIncomes = binding.pcPieChartIncomes
 
@@ -71,27 +70,25 @@ class Stats : Fragment() {
             val pieDataSet = PieDataSet(categoryExpensesList,"Expenses")
 
             pieDataSet.colors = colorsExpenses
-
             pieDataSet.valueTextSize = 18f
-
             pieDataSet.valueTextColor = Color.BLACK
 
             val pieData = PieData(pieDataSet)
 
             pieChartExpenses.data = pieData
-
             pieChartExpenses.legend.isEnabled = false
-
             pieChartExpenses.description.isEnabled = false
 
             centerTextExpenses = cashFlowDao.getTotalExpense()
+
+            @Suppress("SENSELESS_COMPARISON")
             if(centerTextExpenses != null){
                 pieChartExpenses.centerText = centerTextExpenses.toString()
             } else {
                 pieChartExpenses.centerText = "0.0"
             }
 
-            pieChartExpenses.setCenterTextColor(Color.parseColor("#ff595e"))
+            pieChartExpenses.setCenterTextColor(Color.parseColor("#CF6667"))
             pieChartExpenses.setCenterTextSize(20f)
             pieChartExpenses.setHoleColor(Color.parseColor("#424242"))
             pieChartExpenses.animateY(850)
@@ -113,27 +110,25 @@ class Stats : Fragment() {
             val pieDataSet = PieDataSet(categoryIncomesList,"Incomes")
 
             pieDataSet.colors = colorsIncomes
-
             pieDataSet.valueTextSize = 18f
-
             pieDataSet.valueTextColor = Color.BLACK
 
             val pieData = PieData(pieDataSet)
 
             pieChartIncomes.data = pieData
-
             pieChartIncomes.legend.isEnabled = false
-
             pieChartIncomes.description.isEnabled = false
 
             centerTextIncomes = cashFlowDao.getTotalIncome()
+
+            @Suppress("SENSELESS_COMPARISON")
             if(centerTextIncomes != null){
                 pieChartIncomes.centerText = centerTextIncomes.toString()
             } else {
                 pieChartIncomes.centerText = "0.0"
             }
 
-            pieChartIncomes.setCenterTextColor(Color.parseColor("#84a98c"))
+            pieChartIncomes.setCenterTextColor(Color.parseColor("#8BC34A"))
             pieChartIncomes.setCenterTextSize(20f)
             pieChartIncomes.setHoleColor(Color.parseColor("#424242"))
             pieChartIncomes.animateY(850)

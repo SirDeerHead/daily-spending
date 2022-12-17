@@ -4,34 +4,34 @@
     <!-- fragment_home.xml -->
     <string name="plus_add_cash_flow">+ Add Cash Flow</string>
 
-    <!-- items_row_history.xml -->
+    <!-- contentDescription -->
     <string name="image_edit">image edit</string>
     <string name="image_delete">image delete</string>
+    <string name="image_notification">image notification</string>
+    <string name="image_new_cashflow">image new cashflow</string>
 
     <!-- fragment_new_cash_flow.xml -->
     <string name="new_cash_flow">New Cash Flow</string>
 
+    <!-- fragment_new_notification.xml -->
+    <string name="create_new_notification">Create New Notification</string>
+
     <!-- dialog_update.xml -->
     <string name="update_cash_flow">Update Cash Flow</string>
+
+    <!-- buttons -->
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
 
     <!-- database variables -->
     <string name="date">Date</string>
     <string name="amount">Amount</string>
     <string name="category">Category</string>
     <string name="description">Description</string>
-    <string name="add">Add</string>
-    <string name="delete">Delete</string>
-    <string name="chart_of_expenses">Chart of Expenses</string>
-    <string name="chart_of_incomes">Chart of Incomes</string>
-    <string name="balance">Balance: </string>
     <string name="_0_0">0.0</string>
-    <string name="recently_added">Recently added :</string>
-    <string name="add_cash_flow">Add Cash Flow</string>
-    <string name="history">History :</string>
-    <string name="incomes">Incomes :</string>
-    <string name="expenses">Expenses :</string>
 
     <!-- dropdown category -->
     <string-array name="category">
@@ -44,5 +44,27 @@
         <item>Transport</item>
         <item>Inne</item>
     </string-array>
+
+    <!-- rest of string -->
+
+
+    <string name="chart_of_expenses">Chart of Expenses</string>
+    <string name="chart_of_incomes">Chart of Incomes</string>
+
+    <string name="balance">Balance: </string>
+    <string name="history">History :</string>
+    <string name="incomes">Incomes :</string>
+    <string name="expenses">Expenses :</string>
+    <string name="recently_added">Recently added :</string>
+
+    <string name="add_cash_flow">Add Cash Flow</string>
+
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="notification">Notification</string>
+    <string name="txt_notification">
+        Here you can create your own Notification based on provided date and time.
+    </string>
+
 
 </resources>
