@@ -62,9 +62,7 @@
     <string name="title">Title</string>
     <string name="message">Message</string>
     <string name="notification">Notification</string>
-    <string name="txt_notification">
-        Here you can create your own Notification based on provided date and time.
-    </string>
+    <string name="txt_notification">Create your own Notification :</string>
 
 
 </resources>

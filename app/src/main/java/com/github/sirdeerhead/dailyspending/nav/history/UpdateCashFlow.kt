@@ -24,15 +24,18 @@ class UpdateCashFlow : BottomSheetDialogFragment() {
     private var _binding: FragmentUpdateCashFlowBinding? = null
     private val binding get() = _binding!!
 
+    override fun onResume() {
+        super.onResume()
+        val category = resources.getStringArray(R.array.category)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_category_items, category)
+        binding.updateDropdownCategory.setAdapter(arrayAdapter)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUpdateCashFlowBinding.inflate(inflater, container, false)
-
-        val category = resources.getStringArray(R.array.category)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_category_items, category)
-        binding.updateDropdownCategory.setAdapter(arrayAdapter)
 
         val cashFlowDao = (activity?.application as CashFlowApp).database.cashFlowDao()
         binding.updateCashFlow.setOnClickListener{

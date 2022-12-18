@@ -91,10 +91,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/TextTheme"
             android:background="@color/InputsTheme"
-            android:maxLines="1"
             android:focusableInTouchMode="false"
+            android:focusable="false"
             android:hint="@string/category"
-            android:inputType="none" />
+            android:inputType="none"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

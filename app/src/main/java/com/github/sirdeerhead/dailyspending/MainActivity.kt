@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity()  {
         setContentView(binding.root)
         // First it's opening 'Home' screen
         replaceFragment(Home())
+
+        this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         // Selecting 'Home' as first selected in menu
         binding.bottomNavigationView.selectedItemId = R.id.home

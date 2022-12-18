@@ -1,8 +1,10 @@
 package com.github.sirdeerhead.dailyspending.nav.history
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -22,6 +24,8 @@ import kotlinx.coroutines.launch
 import com.github.sirdeerhead.dailyspending.room.CashFlowAdapterHistory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class History : Fragment(),  SearchView.OnQueryTextListener{
@@ -31,6 +35,10 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var cashFlowViewModel: CashFlowViewModel
     private lateinit var mainAdapter: CashFlowAdapterHistory
+
+    override fun onResume() {
+        super.onResume()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,11 +51,12 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
 
         val searchView = binding.wSearchView
 
+
         lifecycleScope.launch{
             cashFlowDao.fetchAllCashFlows().collect{
                 val list = ArrayList(it)
                 setItemAdapter(list, cashFlowDao)
-                setupListOfCashFlowIntoRecyclerView(list, cashFlowDao)
+                setupListOfCashFlowIntoRecyclerView(list)
             }
         }
 
@@ -62,6 +71,30 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         updateDialog.setCancelable(false)
         val binding = FragmentUpdateCashFlowBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
+
+        val category = resources.getStringArray(R.array.category)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_category_items, category)
+        binding.updateDropdownCategory.setAdapter(arrayAdapter)
+
+        binding.updateDropdownCategory.setOnClickListener{
+            binding.updateDropdownCategory.text.clear()
+        }
+
+        binding.updateDate.setOnClickListener{
+                val cashFlowCalendar = Calendar.getInstance()
+                val year = cashFlowCalendar.get(Calendar.YEAR)
+                val month = cashFlowCalendar.get(Calendar.MONTH)
+                val day = cashFlowCalendar.get(Calendar.DAY_OF_MONTH)
+                DatePickerDialog(requireContext(),
+                    { _, selectedYear, selectedMonth, selectedDayOfMonth ->
+                        val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
+                        binding.updateDate.setText(selectedDate)
+                    },
+                    year,
+                    month,
+                    day
+                ).show()
+        }
 
         lifecycleScope.launch{
             cashFlowDao.fetchCashFlow(id).collect{
@@ -145,8 +178,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         alertDialog.show()
     }
 
-    private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>,
-                                                    cashFlowDao: CashFlowDao){
+    private fun setupListOfCashFlowIntoRecyclerView(cashFlowList: ArrayList<CashFlowEntity>){
         if(cashFlowList.isNotEmpty()){
 
             binding.rvAllHistory.layoutManager = LinearLayoutManager(activity)
@@ -180,11 +212,13 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         
         binding.rvAllHistory.adapter = mainAdapter
 
+        @Suppress("SENSELESS_COMPARISON","UNNECESSARY_NOT_NULL_ASSERTION")
         if (mainAdapter != null){
             mainViewModel.searchRoom(searchQuery).observe(this) { list ->
                 list.let{
+                    @Suppress()
                     mainAdapter!!.setData(it)
-               }
+                }
             }
         } else {
             println("dummy")
