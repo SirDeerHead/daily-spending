@@ -70,6 +70,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         val updateDialog = BottomSheetDialog(requireContext(), com.google.android.material.R.style.Theme_Design_BottomSheetDialog)
         updateDialog.setCancelable(false)
         val binding = FragmentUpdateCashFlowBinding.inflate(layoutInflater)
+
         updateDialog.setContentView(binding.root)
 
         val category = resources.getStringArray(R.array.category)

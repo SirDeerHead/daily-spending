@@ -79,6 +79,15 @@ class Home : Fragment() {
             } else {
                 binding.tvMoneyExpensesValue.text = "0.0"
             }
+
+            val totalBalance: Double = totalIncome.plus(totalExpense)
+
+            if(totalBalance != null){
+                binding.tvMoneyBalanceValue.text = totalBalance.toString()
+            } else {
+                binding.tvMoneyBalanceValue.text = "0.0"
+            }
+
         }
     }
 

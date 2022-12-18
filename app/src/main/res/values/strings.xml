@@ -62,7 +62,9 @@
     <string name="title">Title</string>
     <string name="message">Message</string>
     <string name="notification">Notification</string>
-    <string name="txt_notification">Create your own Notification :</string>
+    <string name="txt_notification">Create a Notification : </string>
+    <string name="quit_app">Quit</string>
+    <string name="txt_quit_app">Quit the Application : </string>
 
 
 </resources>
