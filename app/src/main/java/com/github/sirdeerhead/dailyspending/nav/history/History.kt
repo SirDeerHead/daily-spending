@@ -36,10 +36,6 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
     private lateinit var cashFlowViewModel: CashFlowViewModel
     private lateinit var mainAdapter: CashFlowAdapterHistory
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,6 +62,7 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
         return binding.root
     }
 
+    @Suppress("NAME_SHADOWING")
     private fun updateRecordDialog(id:Int, cashFlowDao: CashFlowDao){
         val updateDialog = BottomSheetDialog(requireContext(), com.google.android.material.R.style.Theme_Design_BottomSheetDialog)
         updateDialog.setCancelable(false)
@@ -132,7 +129,6 @@ class History : Fragment(),  SearchView.OnQueryTextListener{
                     "Data inputted can't be empty.",
                     Toast.LENGTH_LONG).show()
             }
-
         }
 
         binding.cancelCashFlow.setOnClickListener {

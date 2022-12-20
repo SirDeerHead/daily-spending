@@ -1,16 +1,13 @@
 package com.github.sirdeerhead.dailyspending.nav.settings
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentSettingsBinding
-import com.github.sirdeerhead.dailyspending.nav.home.NewCashFlow
-import kotlin.system.exitProcess
 
 class Settings : Fragment() {
 
@@ -36,7 +33,9 @@ class Settings : Fragment() {
 
     private fun closeApp(){
         val builder = AlertDialog.Builder(context)
-        builder.setMessage("Do you want to Exit ?")
+        builder.setTitle("Quit")
+        builder.setIcon(R.drawable.ic_quit)
+        builder.setMessage("Do you want to close\nthis application completely ?")
         builder.setCancelable(true)
 
         builder.setNegativeButton("No") { dialogInterface, _ ->
