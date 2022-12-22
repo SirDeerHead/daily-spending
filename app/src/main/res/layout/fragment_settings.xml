@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.125"
             android:backgroundTint="@color/CardsTheme">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llNotification"
@@ -41,7 +41,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:paddingHorizontal="10dp"
                     android:ems="12"
                     android:singleLine="false"
                     android:textColor="@color/TextTheme">
@@ -64,6 +63,84 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cvSettings_3"
+            app:cardCornerRadius="30dp"
+            app:cardMaxElevation="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.125"
+            android:backgroundTint="@color/CardsTheme">
+            <LinearLayout
+                android:id="@+id/llSettings_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/neon_outline"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="15dp"
+                    android:text="@string/choose_currency"
+                    android:singleLine="false"
+                    android:textColor="@color/TextTheme"/>
+
+                <RadioGroup
+                    android:id="@+id/rgCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="10dp"
+                    android:checkedButton="@id/rbCurrencyUSD">
+                    <RadioButton
+                        android:id="@+id/rbCurrencyPLN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="@string/PLN"
+                        android:textColor="@color/TextTheme"
+                        android:onClick="btnSelect"/>
+
+                    <RadioButton
+                        android:id="@+id/rbCurrencyEUR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="@string/EUR"
+                        android:textColor="@color/TextTheme"
+                        android:onClick="btnSelect"/>
+
+                    <RadioButton
+                        android:id="@+id/rbCurrencyUSD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="@string/USD"
+                        android:textColor="@color/TextTheme"
+                        android:onClick="btnSelect"/>
+
+                    <RadioButton
+                        android:id="@+id/rbCurrencyGBP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:text="@string/GBP"
+                        android:textColor="@color/TextTheme"
+                        android:onClick="btnSelect"/>
+                </RadioGroup>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/cvCloseApp"
             app:cardCornerRadius="30dp"
             app:cardMaxElevation="20dp"
@@ -71,7 +148,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.125"
             android:backgroundTint="@color/CardsTheme">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llCloseApp"
@@ -84,12 +161,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
-                    android:paddingStart="40dp"
+                    android:paddingStart="25dp"
                     android:text="@string/txt_quit_app"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:paddingHorizontal="10dp"
                     android:ems="12"
                     android:singleLine="false"
                     android:textColor="@color/TextTheme">
@@ -112,25 +188,6 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cvSettings_3"
-            app:cardCornerRadius="30dp"
-            app:cardMaxElevation="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"
-            android:backgroundTint="@color/CardsTheme">
-            <LinearLayout
-                android:id="@+id/llSettings_3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/neon_outline"
-                android:orientation="horizontal" >
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/cvSettings_4"
             app:cardCornerRadius="30dp"
             app:cardMaxElevation="20dp"
@@ -138,7 +195,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.125"
             android:backgroundTint="@color/CardsTheme">
             <LinearLayout
                 android:id="@+id/llSettings_4"
@@ -147,6 +204,13 @@
                 android:background="@drawable/neon_outline"
                 android:orientation="horizontal" >
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/BackgroundTheme">
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>

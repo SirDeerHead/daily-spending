@@ -1,13 +1,19 @@
 package com.github.sirdeerhead.dailyspending.nav.settings
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentSettingsBinding
+import com.github.sirdeerhead.dailyspending.preferences.CurrencySharedPreferences
+
 
 class Settings : Fragment() {
 
@@ -19,6 +25,8 @@ class Settings : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        loadPreferences()
+        savePreferences()
 
         binding.btnNewNotification.setOnClickListener {
             NewNotification().show(childFragmentManager,"newNotificationTag")
@@ -27,6 +35,11 @@ class Settings : Fragment() {
         binding.btnCloseApp.setOnClickListener {
             closeApp()
         }
+
+        binding.rgCurrency.setOnCheckedChangeListener { _, _ ->
+            savePreferences()
+        }
+
 
         return binding.root
     }
@@ -48,5 +61,36 @@ class Settings : Fragment() {
 
         val alertDialog = builder.create()
         alertDialog.show()
+    }
+
+    private fun savePreferences(){
+        val currencySharedPreferences = CurrencySharedPreferences(activity?.applicationContext)
+
+        val rbId: Int = binding.rgCurrency.checkedRadioButtonId
+        val radioButton: RadioButton = binding.root.findViewById(rbId)
+        val currencyOption: String = radioButton.text.toString()
+
+        currencySharedPreferences.SHARED_PREFERENCES = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = currencySharedPreferences.SHARED_PREFERENCES?.edit()
+        editor?.apply{
+            putString("CURRENCY_KEY", currencyOption)
+            putBoolean("TOGGLE_KEY", radioButton.isChecked)
+        }?.apply()
+    }
+
+    private fun loadPreferences(){
+        val sharedPreferences = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preference = sharedPreferences?.getBoolean("TOGGLE_KEY", false)
+
+        val rbId: Int = binding.rgCurrency.checkedRadioButtonId
+        val radioButton: RadioButton = binding.root.findViewById(rbId)
+
+        if (preference != null) {
+            radioButton.isChecked = preference
+        }
+    }
+
+    private fun btnSelect(view: View){
+
     }
 }

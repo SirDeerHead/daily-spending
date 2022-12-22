@@ -3,9 +3,11 @@ package com.github.sirdeerhead.dailyspending
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.databinding.ActivityMainBinding
+import com.github.sirdeerhead.dailyspending.databinding.FragmentSettingsBinding
 import com.github.sirdeerhead.dailyspending.nav.history.History
 import com.github.sirdeerhead.dailyspending.nav.home.Home
 import com.github.sirdeerhead.dailyspending.nav.settings.Settings

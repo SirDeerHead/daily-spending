@@ -45,6 +45,13 @@
         <item>Inne</item>
     </string-array>
 
+    <!-- Currency -->
+    <string name="choose_currency">Choose currency : </string>
+    <string name="PLN">zł</string>
+    <string name="EUR">€</string>
+    <string name="USD">$</string>
+    <string name="GBP">£</string>
+
     <!-- rest of string -->
 
 

@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending.nav.home
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sirdeerhead.dailyspending.CashFlowViewModel
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHomeBinding
+import com.github.sirdeerhead.dailyspending.preferences.CurrencySharedPreferences
 import com.github.sirdeerhead.dailyspending.room.*
 import kotlinx.coroutines.launch
 
@@ -67,9 +69,11 @@ class Home : Fragment() {
             val totalExpense: Double?
             totalIncome = cashFlowDao.getTotalIncome()
             totalExpense = cashFlowDao.getTotalExpense()
+            val sharedPreferences = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val preference = sharedPreferences?.getString("CURRENCY_KEY", null)
 
             if(totalIncome != null){
-                binding.tvMoneyIncomeValue.text = totalIncome.toString()
+                binding.tvMoneyIncomeValue.text = "$totalIncome $preference" //totalIncome.toString()
             } else {
                 binding.tvMoneyIncomeValue.text = "0.0"
             }
@@ -90,7 +94,6 @@ class Home : Fragment() {
 
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
