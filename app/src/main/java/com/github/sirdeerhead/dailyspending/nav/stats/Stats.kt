@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending.nav.stats
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -58,6 +59,8 @@ class Stats : Fragment() {
 
     private fun setPieChartExpenses() {
         val categoryExpensesList: ArrayList<PieEntry> = ArrayList()
+        val sharedPreferences = context?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preference = sharedPreferences?.getString("CURRENCY_KEY", "$")
 
         lifecycleScope.launch{
             val listOfExpenses = cashFlowDao.countedExpensesCategory()
@@ -83,7 +86,7 @@ class Stats : Fragment() {
 
             @Suppress("SENSELESS_COMPARISON")
             if(centerTextExpenses != null){
-                pieChartExpenses.centerText = centerTextExpenses.toString()
+                pieChartExpenses.centerText = "$centerTextExpenses $preference"
             } else {
                 pieChartExpenses.centerText = "0.0"
             }
@@ -98,6 +101,8 @@ class Stats : Fragment() {
 
     private fun setPieChartIncomes() {
         val categoryIncomesList: ArrayList<PieEntry> = ArrayList()
+        val sharedPreferences = context?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preference = sharedPreferences?.getString("CURRENCY_KEY", "$")
 
         lifecycleScope.launch{
             val listOfIncomes = cashFlowDao.countedIncomesCategory()
@@ -123,7 +128,7 @@ class Stats : Fragment() {
 
             @Suppress("SENSELESS_COMPARISON")
             if(centerTextIncomes != null){
-                pieChartIncomes.centerText = centerTextIncomes.toString()
+                pieChartIncomes.centerText = "$centerTextIncomes $preference"
             } else {
                 pieChartIncomes.centerText = "0.0"
             }

@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sirdeerhead.dailyspending.CashFlowViewModel
 import com.github.sirdeerhead.dailyspending.databinding.FragmentHomeBinding
-import com.github.sirdeerhead.dailyspending.preferences.CurrencySharedPreferences
 import com.github.sirdeerhead.dailyspending.room.*
 import kotlinx.coroutines.launch
 
@@ -70,26 +69,25 @@ class Home : Fragment() {
             totalIncome = cashFlowDao.getTotalIncome()
             totalExpense = cashFlowDao.getTotalExpense()
             val sharedPreferences = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-            val preference = sharedPreferences?.getString("CURRENCY_KEY", null)
+            val preference = sharedPreferences?.getString("CURRENCY_KEY", "zł")
 
             if(totalIncome != null){
-                binding.tvMoneyIncomeValue.text = "$totalIncome $preference" //totalIncome.toString()
+                binding.tvMoneyIncomeValue.text = "$totalIncome $preference"
             } else {
-                binding.tvMoneyIncomeValue.text = "0.0"
+                binding.tvMoneyIncomeValue.text = "0.0 $preference"
             }
 
             if(totalExpense != null){
-                binding.tvMoneyExpensesValue.text = totalExpense.toString()
+                binding.tvMoneyExpensesValue.text = "$totalExpense $preference"
             } else {
-                binding.tvMoneyExpensesValue.text = "0.0"
+                binding.tvMoneyExpensesValue.text = "0.0 $preference"
             }
 
-            val totalBalance: Double = totalIncome.plus(totalExpense)
-
-            if(totalBalance != null){
-                binding.tvMoneyBalanceValue.text = totalBalance.toString()
+            if(totalIncome != null && totalExpense != null && totalIncome.plus(totalExpense) != null){
+                val totalBalance = totalIncome.plus(totalExpense)
+                binding.tvMoneyBalanceValue.text = "$totalBalance $preference"
             } else {
-                binding.tvMoneyBalanceValue.text = "0.0"
+                binding.tvMoneyBalanceValue.text = "0.0 $preference"
             }
 
         }

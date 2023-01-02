@@ -53,12 +53,10 @@
     <string name="GBP">£</string>
 
     <!-- rest of string -->
-
-
     <string name="chart_of_expenses">Chart of Expenses</string>
     <string name="chart_of_incomes">Chart of Incomes</string>
 
-    <string name="balance">Balance: </string>
+    <string name="balance">Balance :</string>
     <string name="history">History :</string>
     <string name="incomes">Incomes :</string>
     <string name="expenses">Expenses :</string>

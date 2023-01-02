@@ -2,13 +2,12 @@ package com.github.sirdeerhead.dailyspending.nav.settings
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import com.github.sirdeerhead.dailyspending.R
 import com.github.sirdeerhead.dailyspending.databinding.FragmentSettingsBinding
@@ -67,30 +66,31 @@ class Settings : Fragment() {
         val currencySharedPreferences = CurrencySharedPreferences(activity?.applicationContext)
 
         val rbId: Int = binding.rgCurrency.checkedRadioButtonId
+        val radioGroup: RadioGroup = binding.rgCurrency
         val radioButton: RadioButton = binding.root.findViewById(rbId)
         val currencyOption: String = radioButton.text.toString()
+        val checkedIndex: Int = radioGroup.indexOfChild(radioButton)
 
         currencySharedPreferences.SHARED_PREFERENCES = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = currencySharedPreferences.SHARED_PREFERENCES?.edit()
         editor?.apply{
             putString("CURRENCY_KEY", currencyOption)
-            putBoolean("TOGGLE_KEY", radioButton.isChecked)
+            putInt("RADIO_KEY", checkedIndex)
         }?.apply()
     }
 
     private fun loadPreferences(){
         val sharedPreferences = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val preference = sharedPreferences?.getBoolean("TOGGLE_KEY", false)
+        val loadedRadioIndex = sharedPreferences?.getInt("RADIO_KEY", 0)
 
-        val rbId: Int = binding.rgCurrency.checkedRadioButtonId
-        val radioButton: RadioButton = binding.root.findViewById(rbId)
+        val radioGroup: RadioGroup = binding.rgCurrency
 
-        if (preference != null) {
-            radioButton.isChecked = preference
-        }
-    }
+        val loadedCheckedRadioButton : RadioButton = loadedRadioIndex?.let {
+            radioGroup.getChildAt(
+                it
+            )
+        } as RadioButton
 
-    private fun btnSelect(view: View){
-
+        loadedCheckedRadioButton.isChecked = true
     }
 }
