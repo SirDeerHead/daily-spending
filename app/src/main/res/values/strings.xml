@@ -35,14 +35,14 @@
 
     <!-- dropdown category -->
     <string-array name="category">
-        <item>Jedzenie</item>
-        <item>Mieszkanie</item>
-        <item>Opłaty</item>
-        <item>Zdrowie</item>
-        <item>Ubrania</item>
-        <item>Relaks</item>
+        <item>Food</item>
+        <item>Apartment</item>
+        <item>Fees</item>
+        <item>Health</item>
+        <item>Clothes</item>
+        <item>Relax</item>
         <item>Transport</item>
-        <item>Inne</item>
+        <item>Other</item>
     </string-array>
 
     <!-- Currency -->
