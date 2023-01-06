@@ -1,12 +1,8 @@
 <resources>
     <string name="app_name">Daily Spending</string>
 
-    <!-- fragment_home.xml -->
-    <string name="plus_add_cash_flow">+ Add Cash Flow</string>
-
     <!-- contentDescription -->
     <string name="image_edit">image edit</string>
-    <string name="image_delete">image delete</string>
     <string name="image_notification">image notification</string>
     <string name="image_new_cashflow">image new cashflow</string>
 
@@ -31,7 +27,6 @@
     <string name="amount">Amount</string>
     <string name="category">Category</string>
     <string name="description">Description</string>
-    <string name="_0_0">0.0</string>
 
     <!-- dropdown category -->
     <string-array name="category">
