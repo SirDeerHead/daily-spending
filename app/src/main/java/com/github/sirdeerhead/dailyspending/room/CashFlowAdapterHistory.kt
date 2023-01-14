@@ -57,8 +57,6 @@ class CashFlowAdapterHistory(
     }
 
     class ViewHolder(binding: CardRowHistoryBinding): RecyclerView.ViewHolder(binding.root){
-        val cvHistory = binding.cvHistory
-        val clCardHistory = binding.clCardHistory
         val tvDate = binding.tvDate
         val tvDescription = binding.tvDescription
         val tvAmount = binding.tvAmount

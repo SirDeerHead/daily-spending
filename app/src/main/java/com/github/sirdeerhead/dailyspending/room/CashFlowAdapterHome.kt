@@ -52,16 +52,8 @@ class CashFlowAdapterHome(
     }
 
     class ViewHolder(binding: CardRowHomeBinding): RecyclerView.ViewHolder(binding.root){
-        val cvHome = binding.cvHome
-        val clCardHome = binding.clCardHome
         val tvDateHome = binding.tvDateHome
         val tvDescriptionHome = binding.tvDescriptionHome
         val tvAmountHome = binding.tvAmountHome
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(newData: List<CashFlowEntity>){
-        cashFlows = newData
-        notifyDataSetChanged()
     }
 }
