@@ -55,4 +55,9 @@ interface CashFlowDao {
             @ColumnInfo(name = "totalIncomesCount")
             var totalIncomesCount: Float = 0.0f
         )
+
+    // For Tests //
+
+    @Query("SELECT * FROM `cashFlow-table` ORDER BY date DESC LIMIT 10")
+    suspend fun last10CashFlows(): List<CashFlowEntity>
 }

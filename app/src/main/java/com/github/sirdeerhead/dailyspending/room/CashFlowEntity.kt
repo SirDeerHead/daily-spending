@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class CashFlowEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val date: String = "",
-    val amount: Double = 0.0,
+    var amount: Double = 0.0,
     val category: String = "",
     val description: String = "",
 )

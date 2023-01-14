@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [CashFlowEntity::class], version = 1)
 abstract class CashFlowDatabase: RoomDatabase() {
 
+
+
     abstract fun cashFlowDao(): CashFlowDao
 
     companion object{
