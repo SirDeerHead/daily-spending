@@ -1,6 +1,7 @@
 package com.github.sirdeerhead.dailyspending.room
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -26,10 +27,16 @@ class CashFlowAdapterHome(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val context = holder.itemView.context
         val item = cashFlows[position]
+        var amount = item.amount.toString()
+
+        val sharedPreferences = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val preference = sharedPreferences?.getString("CURRENCY_KEY", "$")
+        amount = "$amount $preference"
 
         holder.tvDateHome.text = item.date
         holder.tvDescriptionHome.text = item.description
-        holder.tvAmountHome.text = item.amount.toString()
+        holder.tvAmountHome.text = amount
+
 
         if(item.amount > 0.0){
             holder.tvAmountHome.setTextColor(ContextCompat.getColor(context, R.color.Good))

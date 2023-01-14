@@ -1,12 +1,8 @@
 <resources>
     <string name="app_name">Daily Spending</string>
 
-    <!-- fragment_home.xml -->
-    <string name="plus_add_cash_flow">+ Add Cash Flow</string>
-
     <!-- contentDescription -->
     <string name="image_edit">image edit</string>
-    <string name="image_delete">image delete</string>
     <string name="image_notification">image notification</string>
     <string name="image_new_cashflow">image new cashflow</string>
 
@@ -31,27 +27,31 @@
     <string name="amount">Amount</string>
     <string name="category">Category</string>
     <string name="description">Description</string>
-    <string name="_0_0">0.0</string>
 
     <!-- dropdown category -->
     <string-array name="category">
-        <item>Jedzenie</item>
-        <item>Mieszkanie</item>
-        <item>Opłaty</item>
-        <item>Zdrowie</item>
-        <item>Ubrania</item>
-        <item>Relaks</item>
+        <item>Food</item>
+        <item>Apartment</item>
+        <item>Fees</item>
+        <item>Health</item>
+        <item>Clothes</item>
+        <item>Relax</item>
         <item>Transport</item>
-        <item>Inne</item>
+        <item>Other</item>
     </string-array>
 
+    <!-- Currency -->
+    <string name="choose_currency">Choose currency : </string>
+    <string name="PLN">zł</string>
+    <string name="EUR">€</string>
+    <string name="USD">$</string>
+    <string name="GBP">£</string>
+
     <!-- rest of string -->
-
-
     <string name="chart_of_expenses">Chart of Expenses</string>
     <string name="chart_of_incomes">Chart of Incomes</string>
 
-    <string name="balance">Balance: </string>
+    <string name="balance">Balance :</string>
     <string name="history">History :</string>
     <string name="incomes">Incomes :</string>
     <string name="expenses">Expenses :</string>
@@ -62,7 +62,9 @@
     <string name="title">Title</string>
     <string name="message">Message</string>
     <string name="notification">Notification</string>
-    <string name="txt_notification">Create your own Notification :</string>
+    <string name="txt_notification">Create a Notification : </string>
+    <string name="quit_app">Quit</string>
+    <string name="txt_quit_app">Quit the Application : </string>
 
 
 </resources>

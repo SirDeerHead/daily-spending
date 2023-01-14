@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,8 +58,8 @@ class NewNotification : BottomSheetDialogFragment() {
 
     private fun showAlert(time: Long, title: String, message: String) {
         val date = Date(time)
-        val dateFormat = android.text.format.DateFormat.getLongDateFormat(activity)
-        val timeFormat = android.text.format.DateFormat.getTimeFormat(activity)
+        val dateFormat = DateFormat.getLongDateFormat(activity)
+        val timeFormat = DateFormat.getTimeFormat(activity)
 
         AlertDialog.Builder(activity)
             .setMessage(

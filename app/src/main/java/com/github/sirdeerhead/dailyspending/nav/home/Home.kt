@@ -1,5 +1,6 @@
 package com.github.sirdeerhead.dailyspending.nav.home
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -67,21 +68,30 @@ class Home : Fragment() {
             val totalExpense: Double?
             totalIncome = cashFlowDao.getTotalIncome()
             totalExpense = cashFlowDao.getTotalExpense()
+            val sharedPreferences = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val preference = sharedPreferences?.getString("CURRENCY_KEY", "zł")
 
             if(totalIncome != null){
-                binding.tvMoneyIncomeValue.text = totalIncome.toString()
+                binding.tvMoneyIncomeValue.text = "$totalIncome $preference"
             } else {
-                binding.tvMoneyIncomeValue.text = "0.0"
+                binding.tvMoneyIncomeValue.text = "0.0 $preference"
             }
 
             if(totalExpense != null){
-                binding.tvMoneyExpensesValue.text = totalExpense.toString()
+                binding.tvMoneyExpensesValue.text = "$totalExpense $preference"
             } else {
-                binding.tvMoneyExpensesValue.text = "0.0"
+                binding.tvMoneyExpensesValue.text = "0.0 $preference"
             }
+
+            if(totalIncome != null && totalExpense != null && totalIncome.plus(totalExpense) != null){
+                val totalBalance = totalIncome.plus(totalExpense)
+                binding.tvMoneyBalanceValue.text = "$totalBalance $preference"
+            } else {
+                binding.tvMoneyBalanceValue.text = "0.0 $preference"
+            }
+
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
