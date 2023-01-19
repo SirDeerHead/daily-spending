@@ -30,7 +30,10 @@ internal class CashFlowDatabaseTest : TestCase(){
     }
 
     // UNIT TEST
+
+    // Unit Test
     @Test
+    // Test - Inserting to database
     fun testDAOInserting() = runBlocking{
         val cashFlow = CashFlowEntity(1, "10.01.2023", 10.0, "Relax", "Lorem Ipsum")
         dao.insert(cashFlow)

@@ -1,6 +1,5 @@
 package com.github.sirdeerhead.dailyspending.room
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class CashFlowAdapterHome(
         holder.tvDescriptionHome.text = item.description
         holder.tvAmountHome.text = amount
 
-
+        // Text coloring by the value
         if(item.amount > 0.0){
             holder.tvAmountHome.setTextColor(ContextCompat.getColor(context, R.color.Good))
         } else if (item.amount == 0.0){

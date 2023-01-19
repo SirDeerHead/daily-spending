@@ -39,11 +39,15 @@ class CashFlowAdapterHistory(
         holder.tvDescription.text = item.description
         holder.tvAmount.text = amount
 
+        // Text coloring by the value
         if(item.amount > 0.0){
+            // Green - Income
             holder.tvAmount.setTextColor(ContextCompat.getColor(context, R.color.Good))
         } else if (item.amount == 0.0){
+            // Black - Neutral / Informational
             holder.tvAmount.setTextColor(ContextCompat.getColor(context, R.color.OnError))
         } else {
+            // Red - Expense
             holder.tvAmount.setTextColor(ContextCompat.getColor(context, R.color.Error))
         }
 
